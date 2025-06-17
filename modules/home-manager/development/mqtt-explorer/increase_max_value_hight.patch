@@ -1,0 +1,13 @@
+diff --git a/app/src/components/Sidebar/CodeDiff/style.tsx b/app/src/components/Sidebar/CodeDiff/style.tsx
+index 84d6c8c..d764513 100644
+--- a/app/src/components/Sidebar/CodeDiff/style.tsx
++++ b/app/src/components/Sidebar/CodeDiff/style.tsx
+@@ -24,7 +24,7 @@ export const style = (theme: Theme) => {
+     },
+     codeWrapper: {
+       display: 'flex',
+-      maxHeight: '15em',
++      maxHeight: '50em',
+       overflow: 'auto',
+       backgroundColor: `${codeBlockColors.background}`,
+     },
