@@ -11,11 +11,16 @@ in
 {
   options.my.programs.development.editors.zed = {
     enable = lib.mkEnableOption "Enable Zed";
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.zed-editor;
+    };
   };
 
   config = lib.mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
+      package = cfg.package;
       extensions = [
         "asciidoc"
         "basher"

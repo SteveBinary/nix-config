@@ -15,7 +15,10 @@
     development = {
       editors = {
         helix.enable = true;
-        zed.enable = true;
+        zed = {
+          enable = true;
+          package = config.lib.nixGL.wrap pkgs.zed-editor;
+        };
         jetbrains = {
           defaultVMOptions = {
             minMemory = 2048;
@@ -82,6 +85,13 @@
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;
     defaultSopsFormat = "yaml";
+  };
+
+  nixGL = {
+    packages = inputs.nixgl.packages;
+    vulkan.enable = true;
+    defaultWrapper = "mesa";
+    installScripts = [ "mesa" ];
   };
 
   nix.registry = {
