@@ -73,6 +73,27 @@
         "type": "github"
       }
     },
+    "json2nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1751578053,
+        "narHash": "sha256-FPxoHMd8GmrbvJYjNIowzrM5F7GAp+Bc8wjgurElikM=",
+        "owner": "SteveBinary",
+        "repo": "json2nix",
+        "rev": "0ad50e3a33ba5fb5112f82c1d6d44f07ddd07370",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SteveBinary",
+        "repo": "json2nix",
+        "type": "github"
+      }
+    },
     "nixgl": {
       "inputs": {
         "flake-utils": [
@@ -176,7 +197,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1750194829,
@@ -197,6 +218,7 @@
         "disko": "disko",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "json2nix": "json2nix",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
@@ -207,6 +229,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "json2nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1750991972,
+        "narHash": "sha256-jzadGZL1MtqmHb5AZcjZhHpNulOdMZPxf8Wifg8e5VA=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "b6509555d8ffaa0727f998af6ace901c5b78dc26",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "rambo",

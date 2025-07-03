@@ -24,13 +24,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rambo = {
       url = "github:SteveBinary/rambo";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    json2nix = {
+      url = "github:SteveBinary/json2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

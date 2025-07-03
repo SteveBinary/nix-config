@@ -94,6 +94,9 @@
       # terminal applications
       gcc # mainly to not need to open RustRover from the nix shell
       inputs.rambo.packages."${pkgs.system}".default
+      inputs.json2nix.packages."${pkgs.system}".default
+
+      rustup
     ];
 
     sessionVariables = {
