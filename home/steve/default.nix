@@ -79,7 +79,7 @@
       # issue: https://github.com/nix-community/home-manager/issues/5173
       # original: https://github.com/NixOS/nixpkgs/issues/254265
       # using this workaround: https://discourse.nixos.org/t/home-manager-collision-with-app-lib/51969/2
-      # TODO: (lib.hiPrio rustdesk-flutter)
+      (lib.hiPrio rustdesk-flutter)
 
       # spellchecking and hyphenation, mostly for LibreOffice
       hunspell
