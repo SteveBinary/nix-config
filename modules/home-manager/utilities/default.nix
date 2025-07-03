@@ -18,14 +18,18 @@ in
       delta
       dive
       dnsutils
+      dua
+      dust
       fastfetch
       file
       hexyl
+      hyperfine
       jq
       parallel
       ripgrep
       tldr
       tree
+      xh
       yq-go
     ];
 
