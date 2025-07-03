@@ -44,6 +44,8 @@ in
       userSettings = {
         auto_update = false;
         base_keymap = "JetBrains";
+        format_on_safe = "off";
+        formatter = "language_server";
         hour_format = "hour24";
         load_direnv = "shell_hook";
         buffer_font_family = "FiraCode Nerd Font";
