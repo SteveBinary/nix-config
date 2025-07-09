@@ -95,6 +95,7 @@ in
   services = {
     flatpak.enable = true;
     fwupd.enable = true;
+    pcscd.enable = true; # for YubiKey
     ollama = {
       enable = true;
       acceleration = "rocm";

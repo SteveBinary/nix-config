@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   vars,
   inputs,
@@ -75,6 +76,7 @@
       vlc
       xorg.xeyes
       ytdownloader
+      pkgs-stable.yubioath-flutter
 
       # issue: https://github.com/nix-community/home-manager/issues/5173
       # original: https://github.com/NixOS/nixpkgs/issues/254265

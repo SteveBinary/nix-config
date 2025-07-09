@@ -47,13 +47,18 @@
           let
             vars = {
               machine = "tardis";
+              system = "x86_64-linux";
               user.name = "steve";
               user.home = "/home/${vars.user.name}";
               myLib = pkgs: import ./lib { inherit pkgs; };
             };
+            pkgs-stable = import inputs.nixpkgs-stable {
+              inherit (vars) system;
+              config.allowUnfree = true;
+            };
           in
           rec {
-            specialArgs = { inherit inputs vars; };
+            specialArgs = { inherit inputs vars pkgs-stable; };
             modules = [
               ./machines/${vars.machine}
               ./modules/nixos
