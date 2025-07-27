@@ -50,6 +50,7 @@ in
         enable = true;
         device = "nodev";
         efiSupport = true;
+        configurationLimit = 30;
       };
       efi = {
         canTouchEfiVariables = true;
