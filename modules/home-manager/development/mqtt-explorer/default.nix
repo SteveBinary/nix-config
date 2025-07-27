@@ -27,16 +27,17 @@ in
       );
     in
     {
-      home.packages =
-        [ patched-mqtt-explorer ]
-        ++ lib.optional cfg.noSandbox (
-          myLib.patchDesktopFile {
-            pkg = patched-mqtt-explorer;
-            appName = "mqtt-explorer";
-            from = "^Exec=mqtt-explorer";
-            to = "Exec=mqtt-explorer --no-sandbox";
-          }
-        );
+      home.packages = [
+        patched-mqtt-explorer
+      ]
+      ++ lib.optional cfg.noSandbox (
+        myLib.patchDesktopFile {
+          pkg = patched-mqtt-explorer;
+          appName = "mqtt-explorer";
+          from = "^Exec=mqtt-explorer";
+          to = "Exec=mqtt-explorer --no-sandbox";
+        }
+      );
     }
   );
 }

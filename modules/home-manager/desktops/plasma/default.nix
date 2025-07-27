@@ -40,17 +40,16 @@ in
       };
       krunner.position = "center";
       kwin.effects.shakeCursor.enable = false;
-      shortcuts =
-        {
-          "kwin"."Window Maximize" = "Meta+Up";
-          "kwin"."ClearLastMouseMark" = "Ctrl+Shift+F12";
-          "kwin"."ClearMouseMarks" = "Ctrl+Shift+F11";
-          "services/org.kde.kcolorchooser.desktop"."_launch" = "Meta+Shift+C";
-          "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+S";
-        }
-        // lib.optionalAttrs config.my.programs.kitty.enable {
-          "services/kitty.desktop"."_launch" = "Ctrl+Alt+T";
-        };
+      shortcuts = {
+        "kwin"."Window Maximize" = "Meta+Up";
+        "kwin"."ClearLastMouseMark" = "Ctrl+Shift+F12";
+        "kwin"."ClearMouseMarks" = "Ctrl+Shift+F11";
+        "services/org.kde.kcolorchooser.desktop"."_launch" = "Meta+Shift+C";
+        "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+S";
+      }
+      // lib.optionalAttrs config.my.programs.kitty.enable {
+        "services/kitty.desktop"."_launch" = "Ctrl+Alt+T";
+      };
       configFile = {
         baloofilerc = {
           General = {
