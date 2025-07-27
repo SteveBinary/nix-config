@@ -73,6 +73,7 @@
       protonmail-bridge-gui
       signal-desktop
       thunderbird
+      trippy
       vlc
       xorg.xeyes
       ytdownloader
