@@ -60,7 +60,6 @@
     bat.enable = true;
     direnv.enable = true;
     fzf.enable = true;
-    utilities.enable = true;
   };
 
   home = {

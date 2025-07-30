@@ -47,7 +47,6 @@
     bat.enable = true;
     direnv.enable = true;
     fzf.enable = true;
-    utilities.enable = true;
     virt-manager-extra.enable = true;
   };
 
@@ -73,7 +72,6 @@
       protonmail-bridge-gui
       signal-desktop
       thunderbird
-      trippy
       vlc
       xorg.xeyes
       ytdownloader

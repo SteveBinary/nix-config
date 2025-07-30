@@ -17,13 +17,32 @@ in
     environment.systemPackages = with pkgs; [
       btop
       curl
+      delta
+      dive
+      dnsutils
+      dua
+      fastfetch
+      file
+      hexyl
+      hyperfine
       iw
+      jq
       killall
+      lshw
+      lsscsi
       mtr
-      ncdu
-      trash-cli
+      parallel
+      pciutils
+      ripgrep
+      tldr
+      tree
       unzip
+      usbutils
       wget
+      xh
+      yq-go
     ];
+
+    programs.trippy.enable = true;
   };
 }

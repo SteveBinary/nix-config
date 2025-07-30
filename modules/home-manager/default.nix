@@ -12,7 +12,6 @@
     ./kitty
     ./nextcloud-client
     ./shells
-    ./utilities
     ./virt-manager-extra
     ./zellij
   ];
