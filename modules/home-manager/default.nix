@@ -3,6 +3,7 @@
 {
   imports = [
     ./bat
+    ./common-utilities
     ./desktops
     ./development
     ./direnv

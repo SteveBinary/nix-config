@@ -12,6 +12,7 @@
   ];
 
   my.programs = {
+    common-utilities.enable = true;
     development = {
       editors = {
         helix.enable = true;
@@ -28,6 +29,7 @@
             enable = true;
             package = pkgs.jetbrains.idea-ultimate;
           };
+          goland.enable = true;
           rider.enable = true;
           rustrover.enable = true;
         };
