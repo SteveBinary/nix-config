@@ -16,6 +16,7 @@
     development = {
       editors = {
         helix.enable = true;
+        vscode.enable = true;
         zed = {
           enable = true;
           package = config.lib.nixGL.wrap pkgs.zed-editor;
