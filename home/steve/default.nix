@@ -1,9 +1,7 @@
 {
   pkgs,
-  pkgs-stable,
   lib,
   vars,
-  inputs,
   ...
 }:
 
@@ -71,11 +69,14 @@
       obsidian
       protonmail-bridge-gui
       signal-desktop
+      stable.yubioath-flutter
       thunderbird
       vlc
       xorg.xeyes
       ytdownloader
-      pkgs-stable.yubioath-flutter
+
+      my.json2nix
+      my.rambo
 
       # issue: https://github.com/nix-community/home-manager/issues/5173
       # original: https://github.com/NixOS/nixpkgs/issues/254265
@@ -94,9 +95,6 @@
 
       # terminal applications
       gcc # mainly to not need to open RustRover from the nix shell
-      inputs.rambo.packages."${pkgs.system}".default
-      inputs.json2nix.packages."${pkgs.system}".default
-
       rustup
     ];
 

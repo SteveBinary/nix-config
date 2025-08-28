@@ -4,12 +4,10 @@
   config,
   inputs,
   vars,
+  overlays,
   ...
 }:
 
-let
-  myLib = vars.myLib pkgs;
-in
 {
   imports = [
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
@@ -38,7 +36,15 @@ in
 
   system.stateVersion = "25.11"; # Change with great care!
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = with overlays; [
+      pkgs-stable
+      my-lib
+      json2nix
+      rambo
+    ];
+  };
 
   ########## boot #################################################################################
 
@@ -184,7 +190,7 @@ in
 
   users.users = {
     "${vars.user.name}" = {
-      description = myLib.stringUtils.upperCaseFirstLetter vars.user.name;
+      description = pkgs.my.lib.stringUtils.upperCaseFirstLetter vars.user.name;
       isNormalUser = true;
       home = vars.user.home;
       extraGroups = [

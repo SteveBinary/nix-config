@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  myLib,
   ...
 }:
 
@@ -31,7 +30,7 @@ in
         patched-mqtt-explorer
       ]
       ++ lib.optional cfg.noSandbox (
-        myLib.patchDesktopFile {
+        pkgs.my.lib.patchDesktopFile {
           pkg = patched-mqtt-explorer;
           appName = "mqtt-explorer";
           from = "^Exec=mqtt-explorer";

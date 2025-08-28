@@ -1,6 +1,8 @@
 {
   pkgs,
   inputs,
+  overlays,
+  vars,
   config,
   ...
 }:
@@ -9,6 +11,11 @@
   imports = [
     ./fonts.nix
     ./home-files.nix
+  ];
+
+  nixpkgs.overlays = with overlays; [
+    pkgs-before-plasma5-drop
+    my-lib
   ];
 
   my.programs = {
@@ -43,7 +50,7 @@
     };
     git = {
       enable = true;
-      askpass = "${pkgs.libsForQt5.ksshaskpass}/bin/ksshaskpass";
+      askpass = "${pkgs.before-plasma5-drop.libsForQt5.ksshaskpass}/bin/ksshaskpass";
       includes = [ { path = config.sops.secrets.git_user_information.path; } ];
     };
     shells = {
@@ -79,6 +86,8 @@
       GRADLE_USER_HOME = "${config.home.homeDirectory}/.gradle";
     };
 
+    username = vars.user.name;
+    homeDirectory = vars.user.home;
     preferXdgDirectories = true;
     stateVersion = "25.11";
   };
@@ -102,7 +111,7 @@
 
   nix.registry = {
     nixpkgs.flake = inputs.nixpkgs;
-    nixpkgs-stable.flake = inputs.nixpkgs-stable;
+    # nixpkgs-stable.flake = inputs.nixpkgs-stable;
   };
 
   nixpkgs = {
