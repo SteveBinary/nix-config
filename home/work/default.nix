@@ -58,6 +58,10 @@
       };
       zsh.enable = true;
     };
+    kitty = {
+      enable = true;
+      package = config.lib.nixGL.wrap pkgs.kitty;
+    };
     oh-my-posh.enable = true;
     zellij.enable = true;
     bat.enable = true;
