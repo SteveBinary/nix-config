@@ -44,7 +44,7 @@
   };
 
   outputs =
-    inputs@{ self, ... }:
+    inputs:
     {
       nixosConfigurations = {
         tardis = inputs.nixpkgs.lib.nixosSystem (
@@ -57,7 +57,7 @@
             };
             specialArgs = {
               inherit inputs vars;
-              inherit (self) overlays;
+              inherit (inputs.self) overlays;
             };
           in
           {
@@ -113,7 +113,7 @@
             inherit pkgs;
             extraSpecialArgs = {
               inherit inputs vars;
-              inherit (self) overlays;
+              inherit (inputs.self) overlays;
             };
             modules = [
               ./home/work
