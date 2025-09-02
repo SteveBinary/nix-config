@@ -74,7 +74,7 @@
                 home-manager.extraSpecialArgs = specialArgs;
                 home-manager.sharedModules = [
                   ./modules/home-manager
-                  inputs.plasma-manager.homeManagerModules.plasma-manager
+                  inputs.plasma-manager.homeModules.plasma-manager
                 ];
               }
             ];
@@ -119,7 +119,7 @@
               ./home/work
               ./modules/home-manager
               inputs.sops-nix.homeManagerModules.sops
-              inputs.plasma-manager.homeManagerModules.plasma-manager
+              inputs.plasma-manager.homeModules.plasma-manager
             ];
           }
         );
