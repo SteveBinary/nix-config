@@ -85,9 +85,11 @@ in
                 template =
                   builtins.replaceStrings [ "\n" ] [ "" ] # gotmpl
                     ''
-                      {{ .UpstreamIcon }} {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}
-                      {{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}
-                      {{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}
+                      {{ .UpstreamIcon }} {{ .HEAD }}
+                      {{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}
+                      {{ if .Working.Changed }} |  {{ .Working.String }}{{ end }}
+                      {{ if .Staging.Changed }} |  {{ .Staging.String }}{{ end }}
+                      {{ if gt .StashCount 0 }} |  {{ .StashCount }}{{ end }}
                     '';
                 style = "plain";
                 foreground = "p:lavender";
