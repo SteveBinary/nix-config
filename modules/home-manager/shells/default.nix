@@ -13,6 +13,7 @@ in
   imports = [
     ./bash.nix
     ./zsh.nix
+    ./atuin.nix
     ./oh-my-posh.nix
   ];
 

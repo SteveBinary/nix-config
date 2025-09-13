@@ -69,6 +69,7 @@
       enable = true;
       package = config.lib.nixGL.wrap pkgs.kitty;
     };
+    atuin.enable = true;
     oh-my-posh.enable = true;
     zellij.enable = true;
     bat.enable = true;

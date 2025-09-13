@@ -40,6 +40,7 @@
       zsh.enable = true;
     };
     kitty.enable = true;
+    atuin.enable = true;
     oh-my-posh.enable = true;
     zellij.enable = true;
     bat.enable = true;
