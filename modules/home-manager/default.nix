@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./browsers
     ./desktops
     ./development
     ./misc

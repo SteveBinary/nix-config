@@ -60,6 +60,10 @@
     nextcloud-client.enable = true;
   };
 
+  my.browsers = {
+    firefox.enable = true;
+  };
+
   my.misc = {
     virt-manager-extra.enable = true;
   };
@@ -71,7 +75,6 @@
       bottles
       czkawka-full
       element-desktop
-      firefox
       handbrake
       haruna
       inkscape
