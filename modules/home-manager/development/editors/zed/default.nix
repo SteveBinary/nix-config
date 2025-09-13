@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.development.editors.zed;
+  cfg = config.my.development.editors.zed;
 in
 {
-  options.my.programs.development.editors.zed = {
+  options.my.development.editors.zed = {
     enable = lib.mkEnableOption "Enable Zed";
     package = lib.mkOption {
       type = lib.types.package;

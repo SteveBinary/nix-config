@@ -6,11 +6,11 @@
 }:
 
 let
-  cfg = config.my.programs.development.editors.jetbrains;
+  cfg = config.my.development.editors.jetbrains;
   types = import ./types.nix lib;
 in
 {
-  options.my.programs.development.editors.jetbrains = with types; {
+  options.my.development.editors.jetbrains = with types; {
     defaultVMOptions = lib.mkOption {
       type = lib.types.nullOr vmOptions;
       default = null;

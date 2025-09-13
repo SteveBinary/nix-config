@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.development.editors.vscode;
+  cfg = config.my.development.editors.vscode;
 in
 {
-  options.my.programs.development.editors.vscode = {
+  options.my.development.editors.vscode = {
     enable = lib.mkEnableOption "Enable VSCode";
   };
 

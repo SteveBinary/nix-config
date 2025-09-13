@@ -10,12 +10,13 @@
     ./home-files.nix
   ];
 
-  my.desktops.plasma.enable = true;
+  my.desktops = {
+    plasma.enable = true;
+  };
 
-  my.programs = {
-    development.editors = {
+  my.development = {
+    editors = {
       helix.enable = true;
-      zed.enable = true;
       jetbrains = {
         defaultVMOptions = {
           minMemory = 2048;
@@ -26,32 +27,41 @@
           vmOptions.awtBackend = "Wayland";
         };
       };
+      zed.enable = true;
     };
-    git = {
-      enable = true;
-      userName = "SteveBinary";
-      userEmail = "60712092+SteveBinary@users.noreply.github.com";
-      askpass = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-    };
+  };
+
+  my.terminal = {
+    kitty.enable = true;
+    fancyLS = true;
+    clipboardAliasesBackend = "Wayland";
     shells = {
-      fancyLS = true;
-      clipboardAliasesBackend = "Wayland";
       bash.enable = true;
       zsh.enable = true;
     };
-    kitty.enable = true;
-    atuin.enable = true;
-    oh-my-posh.enable = true;
-    zellij.enable = true;
-    bat.enable = true;
-    direnv.enable = true;
-    fzf.enable = true;
-    virt-manager-extra.enable = true;
+    tools = {
+      atuin.enable = true;
+      bat.enable = true;
+      direnv.enable = true;
+      fzf.enable = true;
+      git = {
+        enable = true;
+        userName = "SteveBinary";
+        userEmail = "60712092+SteveBinary@users.noreply.github.com";
+        askpass = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+      };
+      oh-my-posh.enable = true;
+      zellij.enable = true;
+    };
   };
 
   my.services = {
     kde-connect.enable = true;
     nextcloud-client.enable = true;
+  };
+
+  my.misc = {
+    virt-manager-extra.enable = true;
   };
 
   home = {

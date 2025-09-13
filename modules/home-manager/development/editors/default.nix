@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./helix.nix
+    ./helix
     ./jetbrains
     ./vscode
-    ./zed.nix
+    ./zed
   ];
 }

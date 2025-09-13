@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.git;
+  cfg = config.my.terminal.tools.git;
 in
 {
-  options.my.programs.git = {
+  options.my.terminal.tools.git = {
     enable = lib.mkEnableOption "Enable my Home Manager module for git";
     userName = lib.mkOption {
       default = null;

@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.development.kubernetes;
+  cfg = config.my.development.kubernetes;
 in
 {
-  options.my.programs.development.kubernetes = {
+  options.my.development.kubernetes = {
     enable = lib.mkEnableOption "Enable my Home Manager module for development with Kubernetes";
     setShellAliases = lib.mkOption {
       default = true;

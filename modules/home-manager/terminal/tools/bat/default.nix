@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.bat;
+  cfg = config.my.terminal.tools.bat;
 in
 {
-  options.my.programs.bat = {
+  options.my.terminal.tools.bat = {
     enable = lib.mkEnableOption "Enable my Home Manager module for bat";
   };
 

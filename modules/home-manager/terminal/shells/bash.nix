@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.shells.bash;
+  cfg = config.my.terminal.shells.bash;
 in
 {
-  options.my.programs.shells.bash = {
+  options.my.terminal.shells.bash = {
     enable = lib.mkEnableOption "Enable my Home Manager module for bash";
     bashrcExtra = lib.mkOption {
       default = "";

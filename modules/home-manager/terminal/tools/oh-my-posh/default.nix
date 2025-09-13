@@ -5,15 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.oh-my-posh;
+  cfg = config.my.terminal.tools.oh-my-posh;
 in
 {
-  imports = [
-    ./bash.nix
-    ./zsh.nix
-  ];
-
-  options.my.programs.oh-my-posh = {
+  options.my.terminal.tools.oh-my-posh = {
     enable = lib.mkEnableOption "Enable my Home Manager module for oh-my-posh";
   };
 
@@ -25,8 +20,8 @@ in
 
     programs.oh-my-posh = {
       enable = true;
-      enableBashIntegration = config.my.programs.shells.bash.enable;
-      enableZshIntegration = config.my.programs.shells.zsh.enable;
+      enableBashIntegration = config.my.terminal.shells.bash.enable;
+      enableZshIntegration = config.my.terminal.shells.zsh.enable;
       settings = {
         version = 2;
         upgrade = {

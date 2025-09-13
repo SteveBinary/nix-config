@@ -6,7 +6,7 @@
 }:
 
 let
-  cfg = config.my.programs.shells.zsh;
+  cfg = config.my.terminal.shells.zsh;
   autostart_zellij_when_running_in = [
     "kitty"
     "konsole"
@@ -15,7 +15,7 @@ let
     separator: builtins.concatStringsSep separator (map (p: "'${p}'") autostart_zellij_when_running_in);
 in
 {
-  options.my.programs.shells.zsh = {
+  options.my.terminal.shells.zsh = {
     enable = lib.mkEnableOption "Enable my Home Manager module for zsh";
     zshrcExtra = lib.mkOption {
       default = "";
@@ -73,13 +73,13 @@ in
           zstyle ':completion:*' menu no
           zstyle ':fzf-tab:complete:*' fzf-preview 'ls --color $realpath'
         ''
-        (lib.optionalString config.my.programs.kitty.enable ''
+        (lib.optionalString config.my.terminal.kitty.enable ''
           # if running in Kitty, use the kitten-wrapper for ssh to prevent issues on remote hosts that don't have terminfo for Kitty
           # see: https://wiki.archlinux.org/title/Kitty#Terminal_issues_with_SSH
           # BUT: don't set the alias in Zellij because of https://github.com/zellij-org/zellij/issues/4093
           [ -z "$ZELLIJ" ] && [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
         '')
-        (lib.optionalString config.my.programs.development.kubernetes.enable ''
+        (lib.optionalString config.my.development.kubernetes.enable ''
           # fix that the kubecolor tab-completions are not working when the kubectl completions are not triggered at least once before
           compdef kubecolor=kubectl
         '')

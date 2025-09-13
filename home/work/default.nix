@@ -18,44 +18,43 @@
     my-lib
   ];
 
-  my.programs = {
-    common-utilities.enable = true;
-    development = {
-      editors = {
-        helix.enable = true;
-        vscode.enable = true;
-        zed = {
+  my.development = {
+    editors = {
+      helix.enable = true;
+      jetbrains = {
+        defaultVMOptions = {
+          minMemory = 2048;
+          maxMemory = 16384;
+        };
+        intellij = {
           enable = true;
-          package = config.lib.nixGL.wrap pkgs.zed-editor;
+          package = pkgs.jetbrains.idea-ultimate;
         };
-        jetbrains = {
-          defaultVMOptions = {
-            minMemory = 2048;
-            maxMemory = 16384;
-          };
-          intellij = {
-            enable = true;
-            package = pkgs.jetbrains.idea-ultimate;
-          };
-          goland.enable = true;
-          rider.enable = true;
-          rustrover.enable = true;
-        };
+        goland.enable = true;
+        rider.enable = true;
+        rustrover.enable = true;
       };
-      kubernetes.enable = true;
-      mqtt-explorer = {
+      vscode.enable = true;
+      zed = {
         enable = true;
-        noSandbox = true;
+        package = config.lib.nixGL.wrap pkgs.zed-editor;
       };
     };
-    git = {
+    kubernetes.enable = true;
+    mqtt-explorer = {
       enable = true;
-      askpass = "${pkgs.before-plasma5-drop.libsForQt5.ksshaskpass}/bin/ksshaskpass";
-      includes = [ { path = config.sops.secrets.git_user_information.path; } ];
+      noSandbox = true;
     };
+  };
+
+  my.terminal = {
+    kitty = {
+      enable = true;
+      package = config.lib.nixGL.wrap pkgs.kitty;
+    };
+    fancyLS = true;
+    clipboardAliasesBackend = "X11";
     shells = {
-      fancyLS = true;
-      clipboardAliasesBackend = "X11";
       bash = {
         enable = true;
         bashrcExtra = ''
@@ -65,16 +64,20 @@
       };
       zsh.enable = true;
     };
-    kitty = {
-      enable = true;
-      package = config.lib.nixGL.wrap pkgs.kitty;
+    tools = {
+      atuin.enable = true;
+      bat.enable = true;
+      direnv.enable = true;
+      fzf.enable = true;
+      git = {
+        enable = true;
+        askpass = "${pkgs.before-plasma5-drop.libsForQt5.ksshaskpass}/bin/ksshaskpass";
+        includes = [ { path = config.sops.secrets.git_user_information.path; } ];
+      };
+      oh-my-posh.enable = true;
+      utilities.enable = true;
+      zellij.enable = true;
     };
-    atuin.enable = true;
-    oh-my-posh.enable = true;
-    zellij.enable = true;
-    bat.enable = true;
-    direnv.enable = true;
-    fzf.enable = true;
   };
 
   home = {

@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.atuin;
+  cfg = config.my.terminal.tools.atuin;
 in
 {
-  options.my.programs.atuin = {
+  options.my.terminal.tools.atuin = {
     enable = lib.mkEnableOption "Enable my Home Manager module for Atuin";
   };
 

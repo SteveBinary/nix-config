@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.direnv;
+  cfg = config.my.terminal.tools.direnv;
 in
 {
-  options.my.programs.direnv = {
+  options.my.terminal.tools.direnv = {
     enable = lib.mkEnableOption "Enable my Home Manager module for direnv";
   };
 

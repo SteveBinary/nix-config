@@ -47,7 +47,7 @@ in
         "services/org.kde.kcolorchooser.desktop"."_launch" = "Meta+Shift+C";
         "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+S";
       }
-      // lib.optionalAttrs config.my.programs.kitty.enable {
+      // lib.optionalAttrs config.my.terminal.kitty.enable {
         "services/kitty.desktop"."_launch" = "Ctrl+Alt+T";
       };
       configFile = {
@@ -69,7 +69,7 @@ in
           };
         };
         kdeglobals = {
-          General = lib.optionalAttrs config.my.programs.kitty.enable {
+          General = lib.optionalAttrs config.my.terminal.kitty.enable {
             TerminalApplication = "kitty";
             TerminalService = "kitty.desktop";
           };

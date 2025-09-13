@@ -3,7 +3,7 @@
 {
   imports = [
     ./editors
-    ./kubernetes.nix
+    ./kubernetes
     ./mqtt-explorer
   ];
 }

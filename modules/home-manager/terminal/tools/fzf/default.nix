@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.fzf;
+  cfg = config.my.terminal.tools.fzf;
 in
 {
-  options.my.programs.fzf = {
+  options.my.terminal.tools.fzf = {
     enable = lib.mkEnableOption "Enable my Home Manager module for fzf";
   };
 

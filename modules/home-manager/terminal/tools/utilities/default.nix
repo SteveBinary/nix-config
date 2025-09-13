@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.common-utilities;
+  cfg = config.my.terminal.tools.utilities;
 in
 {
-  options.my.programs.common-utilities = {
+  options.my.terminal.tools.utilities = {
     enable = lib.mkEnableOption "Enable my commonly used utilities";
   };
 

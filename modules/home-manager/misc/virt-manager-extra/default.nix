@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.virt-manager-extra;
+  cfg = config.my.misc.virt-manager-extra;
 in
 {
-  options.my.programs.virt-manager-extra = {
+  options.my.misc.virt-manager-extra = {
     enable = lib.mkEnableOption "Enable my Home Manager module for virt-manager-extra";
   };
 

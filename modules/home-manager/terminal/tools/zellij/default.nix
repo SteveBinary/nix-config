@@ -5,10 +5,10 @@
 }:
 
 let
-  cfg = config.my.programs.zellij;
+  cfg = config.my.terminal.tools.zellij;
 in
 {
-  options.my.programs.zellij = {
+  options.my.terminal.tools.zellij = {
     enable = lib.mkEnableOption "Enable my Home Manager module for zellij";
   };
 

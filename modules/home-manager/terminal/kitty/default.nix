@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.kitty;
+  cfg = config.my.terminal.kitty;
 in
 {
-  options.my.programs.kitty = {
+  options.my.terminal.kitty = {
     enable = lib.mkEnableOption "Enable my Home Manager module for kitty";
     package = lib.mkOption {
       type = lib.types.package;

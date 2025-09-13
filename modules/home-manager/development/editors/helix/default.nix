@@ -6,10 +6,10 @@
 }:
 
 let
-  cfg = config.my.programs.development.editors.helix;
+  cfg = config.my.development.editors.helix;
 in
 {
-  options.my.programs.development.editors.helix = {
+  options.my.development.editors.helix = {
     enable = lib.mkEnableOption "Enable Helix";
   };
 
