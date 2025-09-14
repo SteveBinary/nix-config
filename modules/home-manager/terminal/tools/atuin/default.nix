@@ -40,7 +40,9 @@ in
           colors = {
             AlertInfo = "#a6e3a1";
             AlertWarn = "#fab387";
-            AlertError = "#f38ba8";
+            # changed AlertError from red (#f38ba8) to blue to make the currently selected command not look like an error
+            # -> Atuin may seperate this in the future: https://github.com/atuinsh/atuin/issues/2663
+            AlertError = "#89b4fa";
             Annotation = "#89b4fa";
             Base = "#cdd6f4";
             Guidance = "#9399b2";
