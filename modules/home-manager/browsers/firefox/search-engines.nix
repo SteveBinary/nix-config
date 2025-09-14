@@ -7,6 +7,7 @@
     "nix-packages"
     "nixos-options"
     "home-manager-options"
+    "noogle"
     "nixpkgs-pr-tracker"
     "crates-io"
     "google-maps"
@@ -86,6 +87,22 @@
             }
             {
               name = "query";
+              value = "{searchTerms}";
+            }
+          ];
+        }
+      ];
+      icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+    };
+    "noogle" = {
+      name = "Noogle";
+      definedAliases = [ "@noogle" ];
+      urls = [
+        {
+          template = "https://noogle.dev/q";
+          params = [
+            {
+              name = "term";
               value = "{searchTerms}";
             }
           ];
