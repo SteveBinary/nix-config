@@ -1,3 +1,5 @@
+{ lib, cfg }:
+
 {
   "browser.newtabpage.activity-stream.showSponsored" = false;
   "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
@@ -54,4 +56,25 @@
   "toolkit.telemetry.unified" = false;
   "toolkit.telemetry.unifiedIsOptIn" = false;
   "toolkit.telemetry.updatePing.enabled" = false;
+}
+// lib.optionalAttrs (cfg.theme == "system") {
+  "browser.theme.toolbar-theme" = 2;
+  "browser.theme.content-theme" = 2;
+  "extensions.activeThemeID" = "default-theme@mozilla.org";
+  "layout.css.prefers-color-scheme.content-override" = 2;
+}
+// lib.optionalAttrs (cfg.theme == "light") {
+  "browser.theme.toolbar-theme" = 1;
+  "browser.theme.content-theme" = 1;
+  "extensions.activeThemeID" = "firefox-compact-light@mozilla.org";
+  "layout.css.prefers-color-scheme.content-override" = 1;
+}
+// lib.optionalAttrs (cfg.theme == "dark") {
+  "browser.theme.toolbar-theme" = 0;
+  "browser.theme.content-theme" = 0;
+  "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
+  "layout.css.prefers-color-scheme.content-override" = 0;
+}
+// lib.optionalAttrs cfg.extensions.sideberry.enable {
+  "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 }

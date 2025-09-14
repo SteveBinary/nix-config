@@ -17,6 +17,61 @@ in
       type = lib.types.enum searchEngines.order;
       default = "brave";
     };
+    theme = lib.mkOption {
+      type = lib.types.enum [
+        "system"
+        "light"
+        "dark"
+      ];
+      default = "system";
+    };
+    extensions = lib.mkOption {
+      default = { };
+      type = lib.types.submodule {
+        options = {
+          allowManualInstallation = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+          };
+          bitwarden = lib.mkOption {
+            default = { };
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkEnableOption "Enable the Bitwarden Firefox extension";
+              };
+            };
+          };
+          plasmaBrowserIntegration = lib.mkOption {
+            default = { };
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkEnableOption "Enable the Plasma Browser Integration Firefox extension";
+                nativeMessagingHostPackage = lib.mkOption {
+                  default = pkgs.kdePackages.plasma-browser-integration;
+                  type = lib.types.package;
+                };
+              };
+            };
+          };
+          sideberry = lib.mkOption {
+            default = { };
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkEnableOption "Enable the Sideberry Firefox extension";
+              };
+            };
+          };
+          uBlockOrigin = lib.mkOption {
+            default = { };
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkEnableOption "Enable the uBlock Origin Firefox extension";
+              };
+            };
+          };
+        };
+      };
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,10 +81,17 @@ in
         "de"
         "en-US"
       ];
-      policies = import ./policies.nix;
+      nativeMessagingHosts = lib.optional cfg.extensions.plasmaBrowserIntegration.enable cfg.extensions.plasmaBrowserIntegration.nativeMessagingHostPackage;
+      policies = import ./policies.nix { inherit lib cfg; };
       profiles.default = {
         id = 0;
-        settings = import ./settings.nix;
+        settings = import ./profile-settings.nix { inherit lib cfg; };
+        userChrome = lib.mkIf cfg.extensions.sideberry.enable (
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/e31863b2889655e30000b5149caf31aa74469595/chrome/hide_tabs_toolbar_v2.css";
+            hash = "sha256-xP2UqInVthDB67/hU9/rY1jEYXJs+R+i1qDn3LVts6Y=";
+          }
+        );
         search = {
           force = true;
           default = cfg.defaultSearchEngine;

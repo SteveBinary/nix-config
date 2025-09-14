@@ -61,7 +61,16 @@
   };
 
   my.browsers = {
-    firefox.enable = true;
+    firefox = {
+      enable = true;
+      theme = "dark";
+      extensions = {
+        bitwarden.enable = true;
+        plasmaBrowserIntegration.enable = true;
+        sideberry.enable = true;
+        uBlockOrigin.enable = true;
+      };
+    };
   };
 
   my.misc = {
