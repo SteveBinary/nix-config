@@ -38,6 +38,11 @@
       zed = {
         enable = true;
         package = config.lib.nixGL.wrap pkgs.zed-editor;
+        fontSizes = {
+          ui = 12;
+          editor = 10;
+          terminal = 10;
+        };
       };
     };
     kubernetes.enable = true;

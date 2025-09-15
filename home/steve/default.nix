@@ -27,7 +27,14 @@
           vmOptions.awtBackend = "Wayland";
         };
       };
-      zed.enable = true;
+      zed = {
+        enable = true;
+        fontSizes = {
+          ui = 18;
+          editor = 14;
+          terminal = 14;
+        };
+      };
     };
   };
 
