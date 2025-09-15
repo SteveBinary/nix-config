@@ -67,8 +67,18 @@
       extensions = {
         bitwarden.enable = true;
         plasmaBrowserIntegration.enable = true;
-        sideberry.enable = true;
         uBlockOrigin.enable = true;
+
+        # Sideberry config file: /assets/sideberry.config.json
+        # for import into Sideberry:
+        #   -> go into the Sideberry settings
+        #   -> at the bottom: import addon data
+        #   -> select the config file
+        # for export from Sideberry:
+        #   -> go into the Sideberry settings
+        #   -> at the bottom: export addon data (turn OFF "Snapshots" and "Sites icon chache")
+        #   -> format the file with jq and replace the old config with the new one
+        sideberry.enable = true;
       };
     };
   };
