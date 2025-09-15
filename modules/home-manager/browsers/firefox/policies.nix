@@ -62,7 +62,7 @@ in
   #   - if not already done, set extensions.allowManualInstallation to true
   #   - install the desired extension manually from the add-on store
   #   - grab the extension ID from about:support#addons
-  #   - unisntall the desired extension
+  #   - uninstall the desired extension
   #   - unset extensions.allowManualInstallation if it was set before
   ExtensionSettings = lib.mergeAttrsList [
     (lib.optionalAttrs (!cfg.extensions.allowManualInstallation) {
