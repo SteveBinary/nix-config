@@ -31,6 +31,8 @@
 
   "signon.management.page.breach-alerts.enabled" = false;
 
+  "widget.use-xdg-desktop-portal.file-picker" = 1;
+
   # Disable some telemetry
   "app.shield.optoutstudies.enabled" = false;
   "browser.discovery.enabled" = false;
