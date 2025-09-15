@@ -11,6 +11,10 @@ let
   searchEngines = import ./search-engines.nix { inherit pkgs; };
 in
 {
+  imports = [
+    ./apparmor-ubuntu.nix
+  ];
+
   options.my.browsers.firefox = {
     enable = lib.mkEnableOption "Enable my Home Manager module for Firefox";
     defaultSearchEngine = lib.mkOption {

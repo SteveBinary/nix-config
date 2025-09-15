@@ -80,6 +80,23 @@
     };
   };
 
+  my.browsers = {
+    firefox = {
+      enable = true;
+      theme = "dark";
+      defaultSearchEngine = "google";
+      enableAppArmorPreparationForUbuntu = true;
+      extensions = {
+        plasmaBrowserIntegration = {
+          enable = true;
+          nativeMessagingHostPackage = pkgs.before-plasma5-drop.libsForQt5.plasma-browser-integration;
+        };
+        sideberry.enable = true;
+        uBlockOrigin.enable = true;
+      };
+    };
+  };
+
   home = {
     packages = with pkgs; [
       keepass
