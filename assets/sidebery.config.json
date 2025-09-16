@@ -145,7 +145,7 @@
     "tabsTreeLimit": "none",
     "autoFoldTabs": false,
     "autoFoldTabsExcept": "none",
-    "autoExpandTabs": true,
+    "autoExpandTabs": false,
     "autoExpandTabsOnNew": false,
     "rmChildTabs": "folded",
     "tabsLvlDots": true,
@@ -273,6 +273,7 @@
   },
   "sidebar": {
     "nav": [
+      "-AXRsLA9tswm",
       "bAb-bfpz3zjj",
       "add_tp",
       "sp-0",
@@ -298,10 +299,169 @@
         "bookmarksFolderId": -1,
         "newTabBtns": [],
         "srcPanelConfig": null
+      },
+      "-AXRsLA9tswm": {
+        "type": 2,
+        "id": "-AXRsLA9tswm",
+        "name": "Tabs",
+        "color": "toolbar",
+        "iconSVG": "icon_tabs",
+        "iconIMGSrc": "",
+        "iconIMG": "",
+        "lockedPanel": false,
+        "skipOnSwitching": false,
+        "noEmpty": false,
+        "newTabCtx": "none",
+        "dropTabCtx": "none",
+        "moveRules": [],
+        "moveExcludedTo": -1,
+        "bookmarksFolderId": -1,
+        "newTabBtns": [],
+        "srcPanelConfig": null
       }
     }
   },
-  "sidebarCSS": "#root.root {--ntb-btn-height: 35px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 40px;}\n#root.root {--tabs-pinned-width: 60px;}\n#root.root {--tabs-margin: 4px;}\n#root.root {--tabs-height: 35px;}",
+  "contextMenu": {
+    "tabs": [
+      {
+        "opts": [
+          "undoRmTab",
+          "mute",
+          "reload",
+          "bookmark"
+        ]
+      },
+      "separator-1",
+      {
+        "name": "%menu.tab.move_to_sub_menu_name",
+        "opts": [
+          "moveToNewWin",
+          "moveToWin",
+          "separator-5",
+          "moveToPanel",
+          "moveToNewPanel"
+        ]
+      },
+      {
+        "name": "%menu.tab.reopen_in_sub_menu_name",
+        "opts": [
+          "reopenInNewWin",
+          "reopenInWin",
+          "separator-6",
+          "reopenInCtr",
+          "reopenInNewCtr"
+        ]
+      },
+      "separator-2",
+      "pin",
+      "duplicate",
+      "copyTabsUrls",
+      {
+        "name": "",
+        "opts": [
+          "editTabTitle"
+        ]
+      },
+      {
+        "name": "",
+        "opts": [
+          "clearCookies"
+        ]
+      },
+      "separator-3",
+      {
+        "name": "",
+        "opts": [
+          "group"
+        ]
+      },
+      {
+        "name": "",
+        "opts": [
+          "flatten"
+        ]
+      },
+      "separator-4",
+      "urlConf",
+      "close"
+    ],
+    "tabsPanel": [
+      {
+        "opts": [
+          "undoRmTab",
+          "muteAllAudibleTabs",
+          "reloadTabs",
+          "discardTabs"
+        ]
+      },
+      "separator-1224",
+      {
+        "name": "%menu.tabs_panel.sort_all_sub_menu_name",
+        "opts": [
+          "sortAllTabsByTitleAscending",
+          "sortAllTabsByTitleDescending",
+          "sortAllTabsByUrlAscending",
+          "sortAllTabsByUrlDescending",
+          "sortAllTabsByAccessTimeAscending",
+          "sortAllTabsByAccessTimeDescending"
+        ]
+      },
+      "separator-7",
+      "selectAllTabs",
+      "collapseInactiveBranches",
+      "closeTabsDuplicates",
+      "closeTabs"
+    ],
+    "bookmarks": [
+      {
+        "name": "%menu.bookmark.open_in_sub_menu_name",
+        "opts": [
+          "openInNewWin",
+          "openInNewPrivWin",
+          "separator-9",
+          "openInPanel",
+          "openInNewPanel",
+          "separator-10",
+          "openInCtr"
+        ]
+      },
+      {
+        "name": "%menu.bookmark.sort_sub_menu_name",
+        "opts": [
+          "sortByNameAscending",
+          "sortByNameDescending",
+          "sortByLinkAscending",
+          "sortByLinkDescending",
+          "sortByTimeAscending",
+          "sortByTimeDescending"
+        ]
+      },
+      "separator-5",
+      "createBookmark",
+      "createFolder",
+      "createSeparator",
+      "separator-8",
+      "openAsBookmarksPanel",
+      "openAsTabsPanel",
+      "separator-7",
+      "copyBookmarksUrls",
+      "copyBookmarksTitles",
+      "moveBookmarksTo",
+      "edit",
+      "delete"
+    ],
+    "bookmarksPanel": [
+      "collapseAllFolders",
+      "switchViewMode",
+      "convertToTabsPanel",
+      "separator-9",
+      "unloadPanelType",
+      "openPanelConfig",
+      "hidePanel",
+      "removePanel"
+    ]
+  },
+  "sidebarCSS": "#root.root {--general-border-radius: 8px;}\n#root.root {--general-margin: 6px;}\n#root.root {--ntb-btn-height: 45px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 45px;}\n#root.root {--tabs-height: 35px;}\n\n.PinnedTabsBar {\n  display: flex;\n  padding: 10px;\n}\n\n.PinnedTabsBar .tab-wrapper {\n  flex-grow: 4;\n}\n\n.PinnedTabsBar .Tab {\n  width: 100%;\n  min-width: 80px;\n}\n\n.Tab[data-pin=\"true\"][data-active=\"true\"]{\n  background: rgb(126, 122, 144);\n  border: 2px solid lightgray;\n  border-radius: var(--tabs-border-radius);\n}\n\n.Tab[data-pin=\"true\"][data-active=\"false\"]{\n  border-radius: var(--tabs-border-radius);\n  background: rgb(71, 68, 85);\n}\n\n.Tab[data-pin=\"true\"] .fav {\n  width: 20px;\n  height: 20px;\n}\n\n.Tab[data-pin=\"true\"] .fav-icon {\n  width: 100%;\n  height: 100%;\n}",
   "ver": "5.3.3",
   "keybindings": {
     "_execute_sidebar_action": "Ctrl+E",

@@ -6,6 +6,9 @@
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.discoverystream.enabled" = false;
 
+  "browser.tabs.loadBookmarksInTabs" = true;
+  "browser.tabs.closeWindowWithLastTab" = false;
+
   "browser.translations.enable" = true;
   "browser.translations.panelShown" = true;
   "browser.translations.neverTranslateLanguages" = "de,en";
@@ -77,6 +80,6 @@
   "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org";
   "layout.css.prefers-color-scheme.content-override" = 0;
 }
-// lib.optionalAttrs cfg.extensions.sideberry.enable {
+// lib.optionalAttrs cfg.extensions.sidebery.enable {
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 }

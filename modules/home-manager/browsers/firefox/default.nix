@@ -57,11 +57,11 @@ in
               };
             };
           };
-          sideberry = lib.mkOption {
+          sidebery = lib.mkOption {
             default = { };
             type = lib.types.submodule {
               options = {
-                enable = lib.mkEnableOption "Enable the Sideberry Firefox extension";
+                enable = lib.mkEnableOption "Enable the Sidebery Firefox extension";
               };
             };
           };
@@ -90,11 +90,23 @@ in
       profiles.default = {
         id = 0;
         settings = import ./profile-settings.nix { inherit lib cfg; };
-        userChrome = lib.mkIf cfg.extensions.sideberry.enable (
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/e31863b2889655e30000b5149caf31aa74469595/chrome/hide_tabs_toolbar_v2.css";
-            hash = "sha256-xP2UqInVthDB67/hU9/rY1jEYXJs+R+i1qDn3LVts6Y=";
-          }
+        userChrome = lib.mkIf cfg.extensions.sidebery.enable (
+          lib.strings.concatLines [
+            (builtins.readFile (
+              pkgs.fetchurl {
+                url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/e31863b2889655e30000b5149caf31aa74469595/chrome/hide_tabs_toolbar_v2.css";
+                hash = "sha256-xP2UqInVthDB67/hU9/rY1jEYXJs+R+i1qDn3LVts6Y=";
+              }
+            ))
+            ''
+              /* --- my own additions --- */
+
+              /* hide the header in the sidebar - remove the dropdown menu and close button */
+              #sidebar-header {
+                display: none;
+              }
+            ''
+          ]
         );
         search = {
           force = true;
