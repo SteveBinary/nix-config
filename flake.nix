@@ -75,6 +75,7 @@
                 home-manager.sharedModules = [
                   ./modules/home-manager
                   inputs.plasma-manager.homeModules.plasma-manager
+                  inputs.sops-nix.homeManagerModules.sops
                 ];
               }
             ];
