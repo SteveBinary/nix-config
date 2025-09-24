@@ -114,7 +114,7 @@
 
   home = {
     packages = with pkgs; [
-      keepass
+      keepassxc
       vlc
     ];
 
