@@ -13,6 +13,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.sessionVariables = {
+      ZELLIJ_AUTO_EXIT = "true";
+    };
+
     programs.zellij = {
       enable = true;
       enableBashIntegration = false;
