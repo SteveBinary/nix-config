@@ -36,13 +36,15 @@ in
 
     programs.git = {
       enable = true;
-      userName = cfg.userName;
-      userEmail = cfg.userEmail;
       includes = cfg.includes;
-      aliases = {
-        l = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
-      };
-      extraConfig = {
+      settings = {
+        user = {
+          name = lib.mkIf (cfg.userName != null) cfg.userName;
+          email = lib.mkIf (cfg.userEmail != null) cfg.userEmail;
+        };
+        alias = {
+          l = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+        };
         core.askpass = lib.mkIf (cfg.askpass != null) cfg.askpass;
         init.defaultbranch = "main";
         push.autoSetupRemote = true;
