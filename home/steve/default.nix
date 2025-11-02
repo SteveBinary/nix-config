@@ -64,7 +64,6 @@
   };
 
   my.services = {
-    kde-connect.enable = true;
     nextcloud-client.enable = true;
   };
 

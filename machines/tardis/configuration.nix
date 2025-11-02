@@ -77,22 +77,8 @@
       allowedTCPPorts = [
         53317 # LocalSend
       ];
-      allowedTCPPortRanges = [
-        {
-          # KDE Connect
-          from = 1714;
-          to = 1764;
-        }
-      ];
       allowedUDPPorts = [
         53317 # LocalSend
-      ];
-      allowedUDPPortRanges = [
-        {
-          # KDE Connect
-          from = 1714;
-          to = 1764;
-        }
       ];
     };
   };
