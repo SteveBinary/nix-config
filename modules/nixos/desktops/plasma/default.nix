@@ -28,7 +28,7 @@ in
       # mostly for the Info Center app to display all sorts of information
       aha
       clinfo
-      glxinfo
+      mesa-demos
       hdparm
       lshw
       lsscsi
