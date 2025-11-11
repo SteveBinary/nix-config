@@ -30,6 +30,10 @@
           enable = true;
           package = pkgs.jetbrains.idea-ultimate;
         };
+        pycharm = {
+          enable = true;
+          package = pkgs.jetbrains.pycharm-professional;
+        };
         goland.enable = true;
         rider.enable = true;
         rustrover.enable = true;
@@ -115,6 +119,7 @@
   home = {
     packages = with pkgs; [
       keepassxc
+      localsend
       vlc
     ];
 

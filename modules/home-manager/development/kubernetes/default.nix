@@ -22,6 +22,7 @@ in
       kubecolor
       kubectl
       kubectx
+      kubelogin-oidc
       kubernetes-helm
       minikube
     ];
