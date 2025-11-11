@@ -143,13 +143,6 @@
     defaultSopsFormat = "yaml";
   };
 
-  nixGL = {
-    packages = inputs.nixgl.packages;
-    vulkan.enable = true;
-    defaultWrapper = "mesa";
-    installScripts = [ "mesa" ];
-  };
-
   nix.registry = {
     nixpkgs.flake = inputs.nixpkgs;
     # nixpkgs-stable.flake = inputs.nixpkgs-stable;
@@ -162,7 +155,16 @@
     };
   };
 
+  targets.genericLinux = {
+    enable = true;
+    nixGL = {
+      packages = inputs.nixgl.packages;
+      vulkan.enable = true;
+      defaultWrapper = "mesa";
+      installScripts = [ "mesa" ];
+    };
+  };
+
   news.display = "silent";
-  targets.genericLinux.enable = true;
   programs.home-manager.enable = true;
 }
