@@ -116,10 +116,11 @@ in
                     ''
                       {{ if eq "true" .Env.SHOW_KUBERNETES_INFO_IN_PROMPT }}󱃾 {{ .Context }} @
                       <b>{{ if .Namespace }} {{ .Namespace }}{{ else }} default{{ end }}</b>
-                      {{ if      or (regexMatch ".*-prod-?\\d*$" .Namespace) (regexMatch ".*-prod-?\\d*$" .Context) }} <p:red>⬤</>
-                      {{ else if or (hasSuffix  "-qa"            .Namespace) (hasSuffix  "-qa"            .Context) }} <p:orange>⬤</>
-                      {{ else if or (hasSuffix  "-int"           .Namespace) (hasSuffix  "-int"           .Context) }} <p:yellow>⬤</>
-                      {{ else if or (hasSuffix  "-dev"           .Namespace) (hasSuffix  "-dev"           .Context) }} <p:green>⬤</>
+                      {{ if      or (hasSuffix "-dev"      .Context) (regexMatch ".*-dev-?\\d*$"  .Namespace) }} <p:green>⬤</>
+                      {{ else if or (hasSuffix "-int"      .Context) (regexMatch ".*-int-?\\d*$"  .Namespace) }} <p:yellow>⬤</>
+                      {{ else if or (hasSuffix "-qa"       .Context) (regexMatch ".*-qa-?\\d*$"   .Namespace) }} <p:orange>⬤</>
+                      {{ else if or (hasSuffix "-non-prod" .Context)                                          }} <p:green>⬤</>
+                      {{ else if or (hasSuffix "-prod"     .Context) (regexMatch ".*-prod-?\\d*$" .Namespace) }} <p:red>⬤</>
                       {{ end }}
                       {{ end }}
                     '';
