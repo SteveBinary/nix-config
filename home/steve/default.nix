@@ -131,7 +131,6 @@
       bitwarden-desktop
       bottles
       czkawka-full
-      element-desktop
       handbrake
       haruna
       inkscape
