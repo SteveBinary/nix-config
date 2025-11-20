@@ -128,6 +128,7 @@
   home = {
     packages = with pkgs; [
       # desktop applications
+      android-studio
       bitwarden-desktop
       bottles
       czkawka-full
