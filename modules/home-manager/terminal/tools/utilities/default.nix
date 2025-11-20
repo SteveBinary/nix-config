@@ -22,6 +22,7 @@ in
       dnsutils
       dua
       fastfetch
+      fd
       file
       hexyl
       hyperfine
