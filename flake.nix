@@ -55,29 +55,17 @@
               user.name = "steve";
               user.home = "/home/${vars.user.name}";
             };
+          in
+          {
             specialArgs = {
               inherit inputs vars;
               inherit (inputs.self) overlays;
             };
-          in
-          {
-            inherit specialArgs;
             modules = [
               ./machines/${vars.machine}
               ./modules/nixos
               inputs.sops-nix.nixosModules.sops
               inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.${vars.user.name} = ./home/${vars.user.name};
-                home-manager.extraSpecialArgs = specialArgs;
-                home-manager.sharedModules = [
-                  ./modules/home-manager
-                  inputs.plasma-manager.homeModules.plasma-manager
-                  inputs.sops-nix.homeManagerModules.sops
-                ];
-              }
             ];
           }
         );
@@ -147,13 +135,13 @@
       overlays = {
         pkgs-stable = final: prev: {
           stable = import inputs.nixpkgs-stable {
-            inherit (prev) system;
+            inherit (prev.stdenv.hostPlatform) system;
             config.allowUnfree = true;
           };
         };
         pkgs-before-plasma5-drop = final: prev: {
           before-plasma5-drop = import inputs.nixpkgs-before-plasma5-drop {
-            inherit (prev) system;
+            inherit (prev.stdenv.hostPlatform) system;
             config.allowUnfree = true;
           };
         };
@@ -164,12 +152,12 @@
         };
         json2nix = final: prev: {
           my = prev.my or { } // {
-            json2nix = inputs.json2nix.packages."${prev.system}".default;
+            json2nix = inputs.json2nix.packages."${prev.stdenv.hostPlatform.system}".default;
           };
         };
         rambo = final: prev: {
           my = prev.my or { } // {
-            rambo = inputs.rambo.packages."${prev.system}".default;
+            rambo = inputs.rambo.packages."${prev.stdenv.hostPlatform.system}".default;
           };
         };
       };

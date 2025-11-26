@@ -4,7 +4,7 @@ keys:
   - &key_orville age1rn2d32etdp6wa42k9atysxuz3698fflweu3efrn74x790hle2dpswklr9q
 
 creation_rules:
-  - path_regex: home/steve/secrets\.yaml$
+  - path_regex: ^machines/tardis/.*/secrets\.yaml$
     age: *key_personal
   - path_regex: home/work/secrets\.yaml$
     age: *key_work
