@@ -1,7 +1,6 @@
 {
   imports = [
-    ./hardware-configuration.nix
-    ./home-manager.nix
     ./configuration.nix
+    ./hardware-configuration.nix
   ];
 }

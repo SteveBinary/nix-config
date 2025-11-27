@@ -46,73 +46,9 @@
   outputs =
     inputs:
     {
-      nixosConfigurations = {
-        tardis = inputs.nixpkgs.lib.nixosSystem (
-          let
-            vars = {
-              machine = "tardis";
-              system = "x86_64-linux";
-              user.name = "steve";
-              user.home = "/home/${vars.user.name}";
-            };
-          in
-          {
-            specialArgs = {
-              inherit inputs vars;
-              inherit (inputs.self) overlays;
-            };
-            modules = [
-              ./machines/${vars.machine}
-              ./modules/nixos
-              inputs.sops-nix.nixosModules.sops
-              inputs.home-manager.nixosModules.home-manager
-            ];
-          }
-        );
-        orville = inputs.nixpkgs-stable.lib.nixosSystem (
-          let
-            vars = {
-              machine = "orville";
-              user.name = "steve";
-              user.home = "/home/${vars.user.name}";
-            };
-          in
-          {
-            specialArgs = { inherit inputs vars; };
-            modules = [
-              ./machines/${vars.machine}
-              ./modules/nixos
-              inputs.disko.nixosModules.disko
-              inputs.sops-nix.nixosModules.sops
-            ];
-          }
-        );
-      };
-      homeConfigurations = {
-        work = inputs.home-manager.lib.homeManagerConfiguration (
-          let
-            vars = {
-              system = "x86_64-linux";
-              user.name = builtins.getEnv "USER"; # requires '--impure' when doing 'home-manager switch'
-              user.home = "/home/${vars.user.name}";
-            };
-            pkgs = inputs.nixpkgs.legacyPackages.${vars.system};
-          in
-          {
-            inherit pkgs;
-            extraSpecialArgs = {
-              inherit inputs vars;
-              inherit (inputs.self) overlays;
-            };
-            modules = [
-              ./home/work
-              ./modules/home-manager
-              inputs.sops-nix.homeManagerModules.sops
-              inputs.plasma-manager.homeModules.plasma-manager
-            ];
-          }
-        );
-      };
+      overlays = import ./overlays { inherit inputs; };
+      nixosConfigurations = import ./machines { inherit inputs; };
+      homeConfigurations = import ./home { inherit inputs; };
     }
     // inputs.flake-utils.lib.eachDefaultSystem (
       system:
@@ -130,36 +66,5 @@
           ];
         };
       }
-    )
-    // {
-      overlays = {
-        pkgs-stable = final: prev: {
-          stable = import inputs.nixpkgs-stable {
-            inherit (prev.stdenv.hostPlatform) system;
-            config.allowUnfree = true;
-          };
-        };
-        pkgs-before-plasma5-drop = final: prev: {
-          before-plasma5-drop = import inputs.nixpkgs-before-plasma5-drop {
-            inherit (prev.stdenv.hostPlatform) system;
-            config.allowUnfree = true;
-          };
-        };
-        my-lib = final: prev: {
-          my = prev.my or { } // {
-            lib = prev.my.lib or { } // import ./lib { pkgs = final; };
-          };
-        };
-        json2nix = final: prev: {
-          my = prev.my or { } // {
-            json2nix = inputs.json2nix.packages."${prev.stdenv.hostPlatform.system}".default;
-          };
-        };
-        rambo = final: prev: {
-          my = prev.my or { } // {
-            rambo = inputs.rambo.packages."${prev.stdenv.hostPlatform.system}".default;
-          };
-        };
-      };
-    };
+    );
 }
