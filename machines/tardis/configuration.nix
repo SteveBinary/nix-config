@@ -46,13 +46,13 @@
     ];
   };
 
-  ########## Home Manager user ####################################################################
-
-  home-manager.users."${vars.user.name}" = ./home;
-
   ########## boot #################################################################################
 
   boot = {
+    binfmt.emulatedSystems = [
+      # Enable binfmt emulation of aarch64-linux for generating an image for the Raspberry Pi.
+      "aarch64-linux"
+    ];
     initrd.luks.devices."luks-2634ae65-a0f5-4938-aabe-52d2fc9f40aa".device =
       "/dev/disk/by-uuid/2634ae65-a0f5-4938-aabe-52d2fc9f40aa"; # Swap
     loader = {
@@ -177,6 +177,8 @@
   };
 
   ########## users ################################################################################
+
+  home-manager.users."${vars.user.name}" = ./home;
 
   users.users = {
     "${vars.user.name}" = {
