@@ -176,7 +176,7 @@
     username = vars.user.name;
     homeDirectory = vars.user.home;
     preferXdgDirectories = true;
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 
   programs.home-manager.enable = true;
