@@ -67,7 +67,7 @@
         efiSysMountPoint = "/boot";
       };
     };
-    kernel.sysctl."vm.swappines" = 10;
+    kernel.sysctl."vm.swappiness" = 10;
     kernelPackages = pkgs.linuxPackages_6_17;
   };
 
