@@ -140,7 +140,7 @@
       obsidian
       protonmail-bridge-gui
       signal-desktop
-      stable.yubioath-flutter
+      yubioath-flutter
       thunderbird
       vlc
       xorg.xeyes

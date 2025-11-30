@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-before-plasma5-drop.url = "github:NixOS/nixpkgs/25303238b95d1eef8109aa76f8de084bf8eeb178";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
