@@ -56,7 +56,7 @@
         pkgs = import inputs.nixpkgs { inherit system; };
       in
       {
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt;
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             age

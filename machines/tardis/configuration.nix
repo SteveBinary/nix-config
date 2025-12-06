@@ -95,7 +95,7 @@
     pcscd.enable = true; # for YubiKey
     ollama = {
       enable = true;
-      acceleration = "rocm";
+      package = pkgs.ollama-rocm;
       rocmOverrideGfx = "11.0.2";
     };
     printing = {
