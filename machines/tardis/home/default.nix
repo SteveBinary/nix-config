@@ -109,6 +109,17 @@
           PubkeyAuthentication = "yes";
         };
       };
+      "discovery 192.168.178.25" = {
+        hostname = "192.168.178.25";
+        port = 22;
+        user = "steve";
+        identityFile = config.sops.secrets."ssh_keys/id_discovery_ed25519".path;
+        identitiesOnly = true;
+        extraOptions = {
+          PasswordAuthentication = "no";
+          PubkeyAuthentication = "yes";
+        };
+      };
     };
   };
 
@@ -121,6 +132,12 @@
       };
       "ssh_keys/id_orville_ed25519_pub" = {
         path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519.pub";
+      };
+      "ssh_keys/id_discovery_ed25519" = {
+        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519";
+      };
+      "ssh_keys/id_discovery_ed25519_pub" = {
+        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519.pub";
       };
     };
   };

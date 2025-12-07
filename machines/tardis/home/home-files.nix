@@ -41,9 +41,14 @@ in
       @switch:
           ${preventSystemSuspendWhile "NixOS Switch" "sudo nixos-rebuild --verbose --log-format internal-json switch --flake {{ justfile_directory() }}#${vars.machine} |& nom --json"}
 
-      # make a system switch for a remote machine; the `machine` must have an SSH key at ~/.ssh/id_ed25519_`machine` and an entry in ~/.ssh/config with its real hostname / IP address
+      # make a system switch for a remote machine; the `machine` must have an SSH key at ~/.ssh/id_`machine`_ed25519 and an entry in ~/.ssh/config with its real hostname / IP address
       @remote-switch machine:
-          ${preventSystemSuspendWhile "NixOS Remote Switch" "NIX_SSHOPTS=\"-i /home/steve/.ssh/id_ed25519_{{ machine }}\" nixos-rebuild --verbose --log-format internal-json switch --flake {{ justfile_directory() }}#{{ machine }} --target-host root@{{ machine }} |& nom --json"}
+          ${preventSystemSuspendWhile "NixOS Remote Switch" ''
+            NIX_SSHOPTS="-i /home/steve/.ssh/id_{{ machine }}_ed25519" \
+                        nixos-rebuild switch \
+                        --flake {{ justfile_directory() }}#{{ machine }} \
+                        --target-host steve@{{ machine }} \
+                        --sudo --ask-sudo-password''}
 
       # update the flake.lock
       update-flake:

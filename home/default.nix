@@ -11,7 +11,7 @@ let
       };
       modules = [
         home
-        ../modules/home-manager
+        inputs.self.homeManagerModules.default
         inputs.sops-nix.homeManagerModules.sops
         inputs.plasma-manager.homeModules.plasma-manager
       ];

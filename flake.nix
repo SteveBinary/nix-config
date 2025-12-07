@@ -47,8 +47,15 @@
     inputs:
     {
       overlays = import ./overlays { inherit inputs; };
+      nixosModules.default = import ./modules/nixos;
+      homeManagerModules.default = import ./modules/home-manager;
       nixosConfigurations = import ./machines { inherit inputs; };
       homeConfigurations = import ./home { inherit inputs; };
+      packages = {
+        aarch64-linux = {
+          discovery-sdcard-image = inputs.self.nixosConfigurations.discovery.config.system.build.sdImage;
+        };
+      };
     }
     // inputs.flake-utils.lib.eachDefaultSystem (
       system:

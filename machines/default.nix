@@ -10,7 +10,7 @@ let
       };
       modules = [
         ./${vars.machine}
-        ../modules/nixos
+        inputs.self.nixosModules.default
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
@@ -23,7 +23,7 @@ let
               inherit vars;
             };
             sharedModules = [
-              ../modules/home-manager
+              inputs.self.homeManagerModules.default
               inputs.plasma-manager.homeModules.plasma-manager
               inputs.sops-nix.homeManagerModules.sops
             ];
@@ -33,6 +33,12 @@ let
     };
 in
 {
+  discovery = mkSystem inputs.nixpkgs rec {
+    machine = "discovery";
+    user.name = "steve";
+    user.home = "/home/${user.name}";
+  };
+
   orville = mkSystem inputs.nixpkgs-stable rec {
     machine = "orville";
     user.name = "steve";
