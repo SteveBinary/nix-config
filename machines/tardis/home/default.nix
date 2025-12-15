@@ -149,6 +149,7 @@
       bitwarden-desktop
       bottles
       czkawka-full
+      gimp
       handbrake
       haruna
       inkscape
