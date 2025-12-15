@@ -461,8 +461,8 @@
       "removePanel"
     ]
   },
-  "sidebarCSS": "#root.root {--general-border-radius: 8px;}\n#root.root {--general-margin: 6px;}\n#root.root {--ntb-btn-height: 45px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 45px;}\n#root.root {--tabs-height: 35px;}\n\n.PinnedTabsBar {\n  display: flex;\n  padding: 10px;\n}\n\n.PinnedTabsBar .tab-wrapper {\n  flex-grow: 4;\n}\n\n.PinnedTabsBar .Tab {\n  width: 100%;\n  min-width: 80px;\n}\n\n.Tab[data-pin=\"true\"][data-active=\"true\"]{\n  background: rgb(126, 122, 144);\n  border: 2px solid lightgray;\n  border-radius: var(--tabs-border-radius);\n}\n\n.Tab[data-pin=\"true\"][data-active=\"false\"]{\n  border-radius: var(--tabs-border-radius);\n  background: rgb(71, 68, 85);\n}\n\n.Tab[data-pin=\"true\"] .fav {\n  width: 20px;\n  height: 20px;\n}\n\n.Tab[data-pin=\"true\"] .fav-icon {\n  width: 100%;\n  height: 100%;\n}",
-  "ver": "5.3.3",
+  "sidebarCSS": "#root.root {--frame-bg: rgb(43, 42, 51);}\n#root.root {--general-border-radius: 8px;}\n#root.root {--general-margin: 6px;}\n#root.root {--ntb-btn-height: 45px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 45px;}\n#root.root {--tabs-height: 35px;}\n\n/********** tab bar **********/\n\n.PinnedTabsBar {\n  display: flex;\n  padding: 10px;\n}\n\n.PinnedTabsBar .tab-wrapper {\n  flex-grow: 4;\n}\n\n.PinnedTabsBar .Tab {\n  width: 100%;\n  min-width: 80px;\n}\n\n/********** pinned tabs **********/\n\n.Tab[data-pin=\"true\"][data-active=\"true\"] .body {\n  background: rgb(126, 122, 144);\n  border: 2px solid lightgray;\n  border-radius: var(--tabs-border-radius);\n}\n\n.Tab[data-pin=\"true\"][data-active=\"false\"] .body {\n  border-radius: var(--tabs-border-radius);\n  background: rgb(71, 68, 85);\n}\n\n.Tab[data-pin=\"true\"] .fav {\n  width: 20px;\n  height: 20px;\n}\n\n.Tab[data-pin=\"true\"] .fav-icon {\n  width: 100%;\n  height: 100%;\n}\n\n/********** not pinned tabs **********/\n\n.Tab[data-pin=\"false\"][data-active=\"true\"] .body {\n  background: rgb(80, 80, 90);\n}\n",
+  "ver": "5.4.0",
   "keybindings": {
     "_execute_sidebar_action": "Ctrl+E",
     "next_panel": "Alt+Period",
@@ -477,3 +477,4 @@
     "reset_selection": "Alt+R"
   }
 }
+
