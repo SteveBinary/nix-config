@@ -21,7 +21,10 @@ in
     let
       patched-mqtt-explorer = pkgs.mqtt-explorer.overrideAttrs (
         finalAttrs: prevAttrs: {
-          patches = (prevAttrs.patches or [ ]) ++ [ ./increase_max_value_hight.patch ];
+          patches = (prevAttrs.patches or [ ]) ++ [
+            ./increase_max_history_height.patch
+            ./increase_max_value_height.patch
+          ];
         }
       );
     in

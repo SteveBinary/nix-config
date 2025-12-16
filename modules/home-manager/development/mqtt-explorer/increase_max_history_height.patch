@@ -1,0 +1,13 @@
+diff --git a/app/src/components/Sidebar/HistoryDrawer.tsx b/app/src/components/Sidebar/HistoryDrawer.tsx
+index e9090ea..6a76ba7 100644
+--- a/app/src/components/Sidebar/HistoryDrawer.tsx
++++ b/app/src/components/Sidebar/HistoryDrawer.tsx
+@@ -94,7 +94,7 @@ function HistoryDrawer(props: Props) {
+             <span>{props.contentTypeIndicator}</span>
+           </Typography>
+         </div>
+-        <div style={{ maxHeight: '230px', overflowY: 'scroll' }}>
++        <div style={{ maxHeight: '41em', overflowY: 'scroll' }}>
+           {expanded ? props.children : null}
+           {expanded ? elements : null}
+         </div>
