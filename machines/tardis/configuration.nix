@@ -68,7 +68,7 @@
       };
     };
     kernel.sysctl."vm.swappiness" = 10;
-    kernelPackages = pkgs.linuxPackages_6_17;
+    kernelPackages = pkgs.linuxPackages_6_18;
   };
 
   ########## networking ###########################################################################
