@@ -41,6 +41,7 @@
     overlays = with overlays; [
       pkgs-stable
       my-lib
+      my-pkgs
       json2nix
       rambo
     ];

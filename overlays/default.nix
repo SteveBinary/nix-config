@@ -18,6 +18,14 @@
       lib = prev.my.lib or { } // import ../lib { pkgs = final; };
     };
   };
+  my-pkgs = final: prev: {
+    my =
+      prev.my or { }
+      // import ../pkgs {
+        inherit inputs;
+        pkgs = final;
+      };
+  };
   json2nix = final: prev: {
     my = prev.my or { } // {
       json2nix = inputs.json2nix.packages."${prev.stdenv.hostPlatform.system}".default;

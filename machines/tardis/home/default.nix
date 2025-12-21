@@ -166,6 +166,7 @@
 
       my.json2nix
       my.rambo
+      my.x86-64-level
 
       # issue: https://github.com/nix-community/home-manager/issues/5173
       # original: https://github.com/NixOS/nixpkgs/issues/254265

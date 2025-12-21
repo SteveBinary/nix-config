@@ -16,6 +16,7 @@
   nixpkgs.overlays = with overlays; [
     pkgs-before-plasma5-drop
     my-lib
+    my-pkgs
   ];
 
   my.development = {
@@ -121,6 +122,8 @@
       keepassxc
       localsend
       vlc
+
+      my.x86-64-level
     ];
 
     sessionVariables = {
