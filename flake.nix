@@ -51,11 +51,6 @@
       homeManagerModules.default = import ./modules/home-manager;
       nixosConfigurations = import ./machines { inherit inputs; };
       homeConfigurations = import ./home { inherit inputs; };
-      packages = {
-        aarch64-linux = {
-          discovery-sdcard-image = inputs.self.nixosConfigurations.discovery.config.system.build.sdImage;
-        };
-      };
     }
     // inputs.flake-utils.lib.eachDefaultSystem (
       system:
@@ -72,6 +67,7 @@
             sops
           ];
         };
+        packages = import ./pkgs { inherit pkgs inputs; };
       }
     );
 }

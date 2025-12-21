@@ -1,0 +1,32 @@
+.TH x86-64-level 1
+
+.SH NAME
+x86-64-level \- determine the supported x86-64 level
+
+.SH DESCRIPTION
+x86-64-level is a simple command that outputs the supported level of the x86-64 architecture to stdout.
+If the support level could not be determined, 'unknown' is written to stderr.
+
+.SH OPTIONS
+This command does not take any options.
+
+.SH OUTPUT
+.TS
+allbox tab(|);
+lB lB lB lB
+l  l  l  l.
+output |stream|exit code|description
+   4   |stdout|    0    |x86-64 level is \fB4\fP
+   3   |stdout|    0    |x86-64 level is \fB3\fP
+   2   |stdout|    0    |x86-64 level is \fB2\fP
+   1   |stdout|    0    |x86-64 level is \fB1\fP
+unknown|stderr|    1    |x86-64 level could not be determined
+.TE
+
+.SH EXIT STATUS
+.TP
+.B 0
+Successful program execution. The x86-64 level is written to stdout.
+.TP
+.B 1
+Could not determine the x86-64 level. 'unknown' is written to stderr.
