@@ -66,7 +66,8 @@
     firewall.enable = true;
     defaultGateway = "192.168.100.1";
     nameservers = [ "192.168.100.1" ];
-    interfaces.enp5s0.ipv4.addresses = [
+    useDHCP = false;
+    interfaces.ens3.ipv4.addresses = [
       {
         address = "192.168.100.50";
         prefixLength = 24;
@@ -130,8 +131,6 @@
   };
 
   ########## environment  #########################################################################
-
-  virtualisation.incus.agent.enable = true;
 
   environment.systemPackages = with pkgs; [
     age
