@@ -146,6 +146,7 @@
     packages = with pkgs; [
       # desktop applications
       android-studio
+      android-tools # TODO: might need to be put into the system packages
       bitwarden-desktop
       bottles
       czkawka-full

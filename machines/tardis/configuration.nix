@@ -27,8 +27,6 @@
     };
   };
 
-  programs.adb.enable = true;
-
   hardware.flipperzero.enable = true;
   services.hardware.openrgb.enable = true;
 
@@ -187,7 +185,7 @@
       isNormalUser = true;
       home = vars.user.home;
       extraGroups = [
-        "adbusers" # android debug bridge
+        # "adbusers" # android debug bridge
         "dialout" # e.g. for espflash
         "networkmanager"
         "wheel"
