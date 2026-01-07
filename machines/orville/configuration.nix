@@ -56,6 +56,7 @@
     };
     supportedFilesystems = [ "nfs" ];
     kernel.sysctl."vm.swappiness" = 10;
+    kernelParams = [ "pcie_aspm=off" ];
     kernelPackages = pkgs.linuxPackages_6_12;
   };
 
