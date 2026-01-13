@@ -17,10 +17,10 @@ in
     };
     clion = ideOptionsFor "CLion" pkgs.jetbrains.clion;
     goland = ideOptionsFor "GoLand" pkgs.jetbrains.goland;
-    intellij = ideOptionsFor "IntelliJ" pkgs.jetbrains.idea-community;
+    intellij = ideOptionsFor "IntelliJ" pkgs.jetbrains.idea;
     rider = ideOptionsFor "Rider" pkgs.jetbrains.rider;
     phpstorm = ideOptionsFor "PhpStorm" pkgs.jetbrains.phpstorm;
-    pycharm = ideOptionsFor "PyCharm" pkgs.jetbrains.pycharm-community;
+    pycharm = ideOptionsFor "PyCharm" pkgs.jetbrains.pycharm;
     rustrover = ideOptionsFor "RustRover" pkgs.jetbrains.rust-rover;
     webstorm = ideOptionsFor "WebStorm" pkgs.jetbrains.webstorm;
   };

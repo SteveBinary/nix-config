@@ -27,14 +27,8 @@
           minMemory = 2048;
           maxMemory = 16384;
         };
-        intellij = {
-          enable = true;
-          package = pkgs.jetbrains.idea-ultimate;
-        };
-        pycharm = {
-          enable = true;
-          package = pkgs.jetbrains.pycharm-professional;
-        };
+        intellij.enable = true;
+        pycharm.enable = true;
         goland.enable = true;
         rider.enable = true;
         rustrover.enable = true;
