@@ -36,6 +36,7 @@ in
       pciutils
       ripgrep
       tldr
+      tokei
       tree
       unzip
       usbutils

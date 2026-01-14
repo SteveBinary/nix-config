@@ -22,6 +22,7 @@ in
       dnsutils
       dua
       fastfetch
+      fd
       file
       hexyl
       hyperfine
@@ -35,6 +36,7 @@ in
       pciutils
       ripgrep
       tldr
+      tokei
       tree
       unzip
       usbutils
