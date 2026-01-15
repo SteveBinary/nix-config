@@ -36,7 +36,6 @@
       vscode.enable = true;
       zed = {
         enable = true;
-        package = config.lib.nixGL.wrap pkgs.zed-editor;
         fontSizes = {
           ui = 12;
           editor = 10;
@@ -52,10 +51,7 @@
   };
 
   my.terminal = {
-    kitty = {
-      enable = true;
-      package = config.lib.nixGL.wrap pkgs.kitty;
-    };
+    kitty.enable = true;
     fancyLS = true;
     clipboardAliasesBackend = "X11";
     shells = {
@@ -154,12 +150,11 @@
 
   targets.genericLinux = {
     enable = true;
-    nixGL = {
-      packages = inputs.nixgl.packages;
-      vulkan.enable = true;
-      defaultWrapper = "mesa";
-      installScripts = [ "mesa" ];
-    };
+    # This allows GPU-programs to find the drivers in their expected location.
+    # The initial install requires manually running the 'non-nixos-gpu-setup' script.
+    # Instructions are printed on activation in the 'checkExistingGpuDrivers' stage.
+    # See: https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
+    gpu.enable = true;
   };
 
   news.display = "silent";
