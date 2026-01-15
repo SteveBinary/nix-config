@@ -94,8 +94,8 @@ in
           lib.strings.concatLines [
             (builtins.readFile (
               pkgs.fetchurl {
-                url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/e31863b2889655e30000b5149caf31aa74469595/chrome/hide_tabs_toolbar_v2.css";
-                hash = "sha256-xP2UqInVthDB67/hU9/rY1jEYXJs+R+i1qDn3LVts6Y=";
+                url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/021da269f0a0b3da3fac9f14d04a2d51c2afd7dc/chrome/hide_tabs_toolbar_v2.css";
+                hash = "sha256-6S2KLfJdZfnj5BIcqKfjIOrH/1Y8QiypriDAyx4U5yc=";
               }
             ))
             ''
