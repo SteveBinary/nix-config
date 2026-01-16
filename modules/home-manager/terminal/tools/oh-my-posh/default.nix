@@ -55,7 +55,7 @@ in
               {
                 type = "os";
                 template = # gotmpl
-                  ''{{ if .WSL }}WSL at {{ end }}{{ .Icon }}'';
+                  "{{ if .WSL }}WSL at {{ end }}{{ .Icon }}";
                 style = "plain";
                 foreground = "p:os";
               }
@@ -67,7 +67,7 @@ in
               {
                 type = "path";
                 template = # gotmpl
-                  ''{{ if not .Writable }}<p:error> </>{{ end }}{{ .Path }} '';
+                  "{{ if not .Writable }}<p:error> </>{{ end }}{{ .Path }} ";
                 style = "plain";
                 foreground = "p:pink";
                 properties = {

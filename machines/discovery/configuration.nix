@@ -110,7 +110,7 @@
           isNormalUser = true;
           extraGroups = [ "wheel" ];
           home = vars.user.home;
-          hashedPassword = ''$y$j9T$sIOE8k/IG3z2gd8GiUg8E0$vI9TA5TRKTj/RNHdg8K7HRSMriwKc6f68GPWD79YYl3'';
+          hashedPassword = "$y$j9T$sIOE8k/IG3z2gd8GiUg8E0$vI9TA5TRKTj/RNHdg8K7HRSMriwKc6f68GPWD79YYl3";
           openssh.authorizedKeys.keys = sshAuthorizedKeys;
         };
         root = {
