@@ -138,7 +138,7 @@
 
   nix.registry = {
     nixpkgs.flake = inputs.nixpkgs;
-    # nixpkgs-stable.flake = inputs.nixpkgs-stable;
+    nixpkgs-stable.flake = inputs.nixpkgs-stable;
   };
 
   nixpkgs = {
