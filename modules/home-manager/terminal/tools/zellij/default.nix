@@ -23,6 +23,7 @@ in
       enableZshIntegration = false;
       settings = {
         theme = "catppuccin-mocha";
+        show_startup_tips = false;
       };
     };
   };
