@@ -109,6 +109,7 @@
 
   home = {
     packages = with pkgs; [
+      gh
       keepassxc
       localsend
       vlc
