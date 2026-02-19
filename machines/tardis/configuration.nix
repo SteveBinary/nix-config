@@ -42,9 +42,6 @@
       my-pkgs
       json2nix
       rambo
-      # see: https://github.com/rockowitz/ddcutil/issues/581
-      # This overlay should be obsolete once 2.2.6 is available.
-      ddcutil-2-2-3
     ];
   };
 
@@ -144,12 +141,6 @@
   };
 
   security.rtkit.enable = true; # used by PipeWire
-
-  # Workaround for the long wait time when logging in. Seems to be a bug in SDDM.
-  # see: https://github.com/NixOS/nixpkgs/issues/239770#issuecomment-1868402338
-  # This only disables the fingerprint for the login (after a boot or logout).
-  # Using the fingerprint to unlock (get back from lock screen) and for sudo is still possible.
-  security.pam.services.login.fprintAuth = false;
 
   hardware = {
     bluetooth.enable = true;
