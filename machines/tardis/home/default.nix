@@ -162,7 +162,7 @@
       yubioath-flutter
       thunderbird
       vlc
-      xorg.xeyes
+      xeyes
       ytdownloader
 
       my.json2nix
