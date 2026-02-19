@@ -13,6 +13,17 @@
       config.allowUnfree = true;
     };
   };
+  ddcutil-2-2-3 = final: prev: {
+    # see: https://github.com/rockowitz/ddcutil/issues/581
+    # This overlay should be obsolete once 2.2.6 is available.
+    ddcutil = prev.ddcutil.overrideAttrs rec {
+      version = "2.2.3";
+      src = final.fetchurl {
+        url = "https://www.ddcutil.com/tarballs/ddcutil-${version}.tar.gz";
+        hash = "sha256-4XvAUqYvnqhS2eOLpPHtfnNmVnoOGdvhpDnuca2+BqA=";
+      };
+    };
+  };
   my-lib = final: prev: {
     my = prev.my or { } // {
       lib = prev.my.lib or { } // import ../lib { pkgs = final; };

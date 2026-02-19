@@ -42,6 +42,9 @@
       my-pkgs
       json2nix
       rambo
+      # see: https://github.com/rockowitz/ddcutil/issues/581
+      # This overlay should be obsolete once 2.2.6 is available.
+      ddcutil-2-2-3
     ];
   };
 
