@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   overlays,
   vars,
   config,
@@ -137,27 +136,12 @@
     defaultSopsFormat = "yaml";
   };
 
-  nix.registry = {
-    nixpkgs.flake = inputs.nixpkgs;
-    nixpkgs-stable.flake = inputs.nixpkgs-stable;
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
-  };
-
   targets.genericLinux = {
     enable = true;
     # This allows GPU-programs to find the drivers in their expected location.
-    # The initial install requires manually running the 'non-nixos-gpu-setup' script.
+    # The initial install or occasional driver update require manually running the 'non-nixos-gpu-setup' script.
     # Instructions are printed on activation in the 'checkExistingGpuDrivers' stage.
     # See: https://nix-community.github.io/home-manager/index.xhtml#sec-usage-gpu-non-nixos
     gpu.enable = true;
   };
-
-  news.display = "silent";
-  programs.home-manager.enable = true;
 }

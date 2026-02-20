@@ -24,6 +24,8 @@ Configuration files for my NixOS machines and home configurations.
    It leverages [`just`](https://just.systems/man/en/) to define simple commands for doing Home Manager housekeeping,
    like switching configurations and updating the setup.
 
+**NOTE:** On a non-NixOS system, Nix itself may be updated with `sudo -i nix upgrade-nix`.
+
 ## Project structure
 
 ### lib
