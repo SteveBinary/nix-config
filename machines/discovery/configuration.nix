@@ -32,7 +32,6 @@
     consoleLogLevel = 2;
     supportedFilesystems.zfs = lib.mkForce false;
     kernel.sysctl."vm.swappiness" = 10;
-    kernelPackages = pkgs.linuxPackages_6_18;
   };
 
   ########## file systems #########################################################################
