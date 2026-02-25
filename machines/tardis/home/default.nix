@@ -91,7 +91,6 @@
   };
 
   my.misc = {
-    benchmarking.enable = true;
     virt-manager-extra.enable = true;
   };
 
