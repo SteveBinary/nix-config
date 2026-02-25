@@ -92,11 +92,6 @@
     flatpak.enable = true;
     fwupd.enable = true;
     pcscd.enable = true; # for YubiKey
-    ollama = {
-      enable = true;
-      package = pkgs.ollama-rocm;
-      rocmOverrideGfx = "11.0.2";
-    };
     printing = {
       enable = true;
       drivers = [ pkgs.hplip ]; # HP printer
