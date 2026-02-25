@@ -13,6 +13,7 @@
       config.allowUnfree = true;
     };
   };
+  llm-agents = inputs.llm-agents.overlays.default;
   ddcutil-2-2-3 = final: prev: {
     # see: https://github.com/rockowitz/ddcutil/issues/581
     # This overlay should be obsolete once 2.2.6 is available.

@@ -14,6 +14,7 @@
 
   nixpkgs.overlays = with overlays; [
     pkgs-before-plasma5-drop
+    llm-agents
     my-lib
     my-pkgs
   ];
@@ -112,6 +113,10 @@
       keepassxc
       localsend
       vlc
+
+      llm-agents.claude-code
+      llm-agents.codex
+      llm-agents.gemini-cli
 
       my.x86-64-level
     ];
