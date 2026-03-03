@@ -181,8 +181,8 @@
 
       # games
       oh-my-git
-      superTux
-      superTuxKart
+      supertux
+      supertuxkart
 
       # terminal applications
       gcc # mainly to not need to open RustRover from the nix shell
