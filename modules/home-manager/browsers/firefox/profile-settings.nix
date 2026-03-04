@@ -1,6 +1,13 @@
 { lib, cfg }:
 
 {
+  "browser.ai.control.default" = "blocked";
+  "browser.ai.control.linkPreviewKeyPoints" = "blocked";
+  "browser.ai.control.pdfjsAltText" = "blocked";
+  "browser.ai.control.sidebarChatbot" = "blocked";
+  "browser.ai.control.smartTabGroups" = "blocked";
+  "browser.ai.control.translations" = "available";
+
   "browser.newtabpage.activity-stream.showSponsored" = false;
   "browser.newtabpage.activity-stream.showSponsoredCheckboxes" = false;
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
