@@ -114,9 +114,7 @@
       localsend
       vlc
 
-      llm-agents.claude-code
-      llm-agents.codex
-      llm-agents.gemini-cli
+      (llm-agents.claude-code.override { disableTelemetry = true; })
 
       my.x86-64-level
     ];
