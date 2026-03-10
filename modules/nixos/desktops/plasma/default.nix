@@ -15,12 +15,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [
-      # see: https://github.com/rockowitz/ddcutil/issues/581
-      # This overlay should be obsolete once 2.2.6 is available.
-      overlays.ddcutil-2-2-3
-    ];
-
     services = {
       desktopManager.plasma6.enable = true;
       displayManager.plasma-login-manager.enable = true;
