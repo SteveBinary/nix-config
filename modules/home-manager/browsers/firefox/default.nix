@@ -57,6 +57,14 @@ in
               };
             };
           };
+          reactDeveloperTools = lib.mkOption {
+            default = { };
+            type = lib.types.submodule {
+              options = {
+                enable = lib.mkEnableOption "Enable the React Developer Tools Firefox extension";
+              };
+            };
+          };
           sidebery = lib.mkOption {
             default = { };
             type = lib.types.submodule {

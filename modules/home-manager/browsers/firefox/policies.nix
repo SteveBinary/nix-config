@@ -82,6 +82,10 @@ in
         private_browsing = false;
       }
     )
+    (mkOptionalExtensionPolicy cfg.extensions.reactDeveloperTools.enable "@react-devtools" {
+      default_area = "menupanel";
+      private_browsing = false;
+    })
     (mkOptionalExtensionPolicy cfg.extensions.sidebery.enable "{3c078156-979c-498b-8990-85f7987dd929}" {
       default_area = "menupanel";
       private_browsing = true;

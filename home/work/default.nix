@@ -91,6 +91,7 @@
           enable = true;
           nativeMessagingHostPackage = pkgs.before-plasma5-drop.libsForQt5.plasma-browser-integration;
         };
+        reactDeveloperTools.enable = true;
         uBlockOrigin.enable = true;
 
         # Sidebery config file: /assets/sidebery.config.json
