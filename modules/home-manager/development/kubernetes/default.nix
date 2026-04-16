@@ -24,6 +24,7 @@ in
       kubectx
       kubelogin-oidc
       kubernetes-helm
+      fluxcd
       minikube
     ];
 
