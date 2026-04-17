@@ -158,6 +158,7 @@
     bing.metaData.hidden = true;
     ddg.metaData.hidden = true;
     ecosia.metaData.hidden = true;
+    perplexity.metaData.hidden = true;
     wikipedia.metaData.hidden = true;
   };
 }
