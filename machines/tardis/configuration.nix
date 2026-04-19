@@ -196,6 +196,9 @@
   environment = {
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
+    systemPackages = with pkgs; [
+      rocmPackages.amdsmi
+    ];
   };
 
   programs = {
