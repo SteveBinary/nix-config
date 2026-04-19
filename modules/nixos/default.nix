@@ -3,6 +3,7 @@
     ./common-utilities
     ./desktops
     ./nix
+    ./terminfo
     ./virtualisation
   ];
 }

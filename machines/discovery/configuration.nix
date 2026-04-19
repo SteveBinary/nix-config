@@ -20,6 +20,7 @@
       enable = true;
       trusted-users = [ vars.user.name ];
     };
+    terminfo.enableGhostty = true;
   };
 
   ########## boot ################################################################################
