@@ -1,9 +1,8 @@
-{ ... }:
-
 {
   imports = [
     ./atuin
     ./bat
+    ./btop
     ./direnv
     ./fzf
     ./git

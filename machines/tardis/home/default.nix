@@ -50,6 +50,7 @@
     tools = {
       atuin.enable = true;
       bat.enable = true;
+      btop.enable = true;
       direnv.enable = true;
       fzf.enable = true;
       git = {
