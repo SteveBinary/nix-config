@@ -8,6 +8,7 @@
 let
   cfg = config.my.terminal.shells.zsh;
   autostart_zellij_when_running_in = [
+    "ghostty"
     "kitty"
     "konsole"
   ];

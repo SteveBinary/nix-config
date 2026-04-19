@@ -40,7 +40,7 @@
   };
 
   my.terminal = {
-    kitty.enable = true;
+    ghostty.enable = true;
     fancyLS = true;
     clipboardAliasesBackend = "Wayland";
     shells = {

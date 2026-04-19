@@ -47,8 +47,8 @@ in
         "services/org.kde.kcolorchooser.desktop"."_launch" = "Meta+Shift+C";
         "services/org.kde.spectacle.desktop"."RectangularRegionScreenShot" = "Meta+Shift+S";
       }
-      // lib.optionalAttrs config.my.terminal.kitty.enable {
-        "services/kitty.desktop"."_launch" = "Ctrl+Alt+T";
+      // lib.optionalAttrs config.my.terminal.ghostty.enable {
+        "services/com.mitchellh.ghostty.desktop"."_launch" = "Ctrl+Alt+T";
       };
       configFile = {
         baloofilerc = {
@@ -69,9 +69,9 @@ in
           };
         };
         kdeglobals = {
-          General = lib.optionalAttrs config.my.terminal.kitty.enable {
-            TerminalApplication = "kitty";
-            TerminalService = "kitty.desktop";
+          General = lib.optionalAttrs config.my.terminal.ghostty.enable {
+            TerminalApplication = "ghostty";
+            TerminalService = "com.mitchellh.ghostty.desktop";
           };
           KDE = {
             AnimationDurationFactor = 0.25;

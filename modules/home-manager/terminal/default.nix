@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    ./ghostty
     ./kitty
     ./shells
     ./tools
