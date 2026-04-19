@@ -100,12 +100,10 @@ in
         settings = import ./profile-settings.nix { inherit lib cfg; };
         userChrome = lib.mkIf cfg.extensions.sidebery.enable (
           lib.strings.concatLines [
-            (builtins.readFile (
-              pkgs.fetchurl {
-                url = "https://raw.githubusercontent.com/MrOtherGuy/firefox-csshacks/021da269f0a0b3da3fac9f14d04a2d51c2afd7dc/chrome/hide_tabs_toolbar_v2.css";
-                hash = "sha256-6S2KLfJdZfnj5BIcqKfjIOrH/1Y8QiypriDAyx4U5yc=";
-              }
-            ))
+            (
+              # https://github.com/MrOtherGuy/firefox-csshacks/blob/55cdb2938da52407aeff7093c979dafb7782e7c9/chrome/hide_tabs_toolbar_v2.css
+              builtins.readFile ./assets/hide_tabs_toolbar_v2.css
+            )
             ''
               /* --- my own additions --- */
 
