@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -13,10 +14,15 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      nerd-fonts.meslo-lg
+    ];
+
     programs.ghostty = {
       enable = true;
       settings = {
         font-size = 13;
+        font-family = "MesloLGM Nerd Font";
         theme = "Catppuccin Mocha";
 
         auto-update = "off";
