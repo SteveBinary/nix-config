@@ -46,7 +46,7 @@ in
           "pattern"
         ];
         patterns = {
-          "rm -rf" = "fg=white,bold,bg=red";
+          "rm -rf" = "fg=black,bold,bg=red";
           "sudo " = "fg=green,bold";
         };
       };
