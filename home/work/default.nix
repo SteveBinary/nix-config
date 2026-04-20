@@ -51,7 +51,7 @@
   };
 
   my.terminal = {
-    kitty.enable = true;
+    ghostty.enable = true;
     fancyLS = true;
     clipboardAliasesBackend = "X11";
     shells = {
