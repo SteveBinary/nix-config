@@ -27,6 +27,7 @@ in
         maximize = true;
         confirm-close-surface = false;
         quit-after-last-window-closed = false;
+        window-decoration = "server";
       };
     };
   };

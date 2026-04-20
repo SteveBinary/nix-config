@@ -7,13 +7,24 @@
 
 let
   cfg = config.my.terminal.shells.zsh;
-  autostart_zellij_when_running_in = [
-    "ghostty"
-    "kitty"
-    "konsole"
-  ];
-  concat_process_names =
-    separator: builtins.concatStringsSep separator (map (p: "'${p}'") autostart_zellij_when_running_in);
+  autoStartZellijWhenRunningIn = {
+    # $TERM environment variable
+    terminals = [
+      "xterm-ghostty"
+      "xterm-kitty"
+    ];
+    # many terminals, like Konsole, just use the generic - and highly compatible - 'xterm-256color'
+    # => we fall back to identify the app by finding the parent process name of the shell
+    processNames = [
+      # "konsole"
+    ];
+  };
+  concatZellijAutoStartTerminals =
+    separator:
+    builtins.concatStringsSep separator (map (p: "'${p}'") autoStartZellijWhenRunningIn.terminals);
+  concatZellijAutoStartProcessNames =
+    separator:
+    builtins.concatStringsSep separator (map (p: "'${p}'") autoStartZellijWhenRunningIn.processNames);
 in
 {
   options.my.terminal.shells.zsh = {
@@ -84,14 +95,26 @@ in
           # fix that the kubecolor tab-completions are not working when the kubectl completions are not triggered at least once before
           compdef kubecolor=kubectl
         '')
-        (lib.optionalString (config.programs.zellij.enable && !config.programs.zellij.enableZshIntegration)
+        (lib.optionalString
+          (config.my.terminal.tools.zellij.enable && !config.programs.zellij.enableZshIntegration)
           ''
-            # autostart zellij when running via ${concat_process_names ", "}
-            parent_process_names_that_trigger_zellij_autostart=(${concat_process_names " "})
+            # autostart zellij when running in terminals: ${concatZellijAutoStartTerminals ", "}
+            terminals_that_trigger_zellij_autostart=(${concatZellijAutoStartTerminals " "})
+
+            # autostart zellij when running via processes: ${concatZellijAutoStartProcessNames ", "}
+            parent_process_names_that_trigger_zellij_autostart=(${concatZellijAutoStartProcessNames " "})
+
+            current_terminal="$TERM"
             current_parent_process_name="$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d ' ' -f 4) | tail -1 | sed 's/ .*$//'))"
-            if (($parent_process_names_that_trigger_zellij_autostart[(Ie)$current_parent_process_name])); then
+
+            if (($terminals_that_trigger_zellij_autostart[(Ie)$current_terminal])); then
+              eval "$(zellij setup --generate-auto-start zsh)"
+            elif (($parent_process_names_that_trigger_zellij_autostart[(Ie)$current_parent_process_name])); then
               eval "$(zellij setup --generate-auto-start zsh)"
             fi
+
+            unset current_terminal
+            unset terminals_that_trigger_zellij_autostart
             unset current_parent_process_name
             unset parent_process_names_that_trigger_zellij_autostart
           ''
