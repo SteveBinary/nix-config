@@ -38,6 +38,7 @@
     config.allowUnfree = true;
     overlays = with overlays; [
       pkgs-stable
+      fixes
       my-lib
       my-pkgs
       json2nix
