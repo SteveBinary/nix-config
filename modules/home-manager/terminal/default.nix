@@ -44,6 +44,8 @@ in
       n = "cd ~/nix-config";
       p = "cd ~/Projects";
       reboot-now = "sudo shutdown -r now";
+      unix-timestamp = "date +'%s'";
+      utc = "date --utc +'%Y-%m-%M %H:%M:%S'";
       sudo = "sudo "; # for shell aliases to be usable with sudo
     }
     // lib.optionalAttrs cfg.fancyLS {
