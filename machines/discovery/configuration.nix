@@ -69,19 +69,25 @@
   services = {
     openssh = {
       enable = true;
-      settings = {
-        PermitRootLogin = "prohibit-password";
-        PasswordAuthentication = false;
-      };
-      banner = lib.concatLines [
-        # using https://manytools.org/hacker-tools/ascii-banner/ with font ANSI Shadow and horizontal/vertical spacing of Normal
-        "██████╗ ██╗███████╗ ██████╗ ██████╗ ██╗   ██╗███████╗██████╗ ██╗   ██╗"
-        "██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██║   ██║██╔════╝██╔══██╗╚██╗ ██╔╝"
-        "██║  ██║██║███████╗██║     ██║   ██║██║   ██║█████╗  ██████╔╝ ╚████╔╝ "
-        "██║  ██║██║╚════██║██║     ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗  ╚██╔╝  "
-        "██████╔╝██║███████║╚██████╗╚██████╔╝ ╚████╔╝ ███████╗██║  ██║   ██║   "
-        "╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝   ╚═╝   "
-      ];
+      settings =
+        let
+          banner = pkgs.writeText "ssh-banner.txt" (
+            lib.concatLines [
+              # using https://manytools.org/hacker-tools/ascii-banner/ with font ANSI Shadow and horizontal/vertical spacing of Normal
+              "██████╗ ██╗███████╗ ██████╗ ██████╗ ██╗   ██╗███████╗██████╗ ██╗   ██╗"
+              "██╔══██╗██║██╔════╝██╔════╝██╔═══██╗██║   ██║██╔════╝██╔══██╗╚██╗ ██╔╝"
+              "██║  ██║██║███████╗██║     ██║   ██║██║   ██║█████╗  ██████╔╝ ╚████╔╝ "
+              "██║  ██║██║╚════██║██║     ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗  ╚██╔╝  "
+              "██████╔╝██║███████║╚██████╗╚██████╔╝ ╚████╔╝ ███████╗██║  ██║   ██║   "
+              "╚═════╝ ╚═╝╚══════╝ ╚═════╝ ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝   ╚═╝   "
+            ]
+          );
+        in
+        {
+          PermitRootLogin = "prohibit-password";
+          PasswordAuthentication = false;
+          Banner = "${banner}";
+        };
     };
     iperf3 = {
       enable = true;
