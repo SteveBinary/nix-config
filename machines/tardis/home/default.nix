@@ -98,28 +98,24 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "orville 192.168.100.50" = {
-        hostname = "192.168.100.50";
-        port = 22;
-        user = "steve";
-        identityFile = config.sops.secrets."ssh_keys/id_orville_ed25519".path;
-        identitiesOnly = true;
-        extraOptions = {
-          PasswordAuthentication = "no";
-          PubkeyAuthentication = "yes";
-        };
+        HostName = "192.168.100.50";
+        Port = 22;
+        User = "steve";
+        IdentityFile = config.sops.secrets."ssh_keys/id_orville_ed25519".path;
+        IdentitiesOnly = true;
+        PasswordAuthentication = "no";
+        PubkeyAuthentication = "yes";
       };
       "discovery 192.168.178.25" = {
-        hostname = "192.168.178.25";
-        port = 22;
-        user = "steve";
-        identityFile = config.sops.secrets."ssh_keys/id_discovery_ed25519".path;
-        identitiesOnly = true;
-        extraOptions = {
-          PasswordAuthentication = "no";
-          PubkeyAuthentication = "yes";
-        };
+        Hostname = "192.168.178.25";
+        Port = 22;
+        User = "steve";
+        IdentityFile = config.sops.secrets."ssh_keys/id_discovery_ed25519".path;
+        IdentitiesOnly = true;
+        PasswordAuthentication = "no";
+        PubkeyAuthentication = "yes";
       };
     };
   };
