@@ -18,6 +18,7 @@
   my = {
     common-utilities.enable = true;
     desktop.plasma.enable = true;
+    gaming.steam.enable = true;
     nix.enable = true;
     virtualisation = {
       enableDocker = true;
@@ -183,8 +184,6 @@
     };
   };
 
-  users.defaultUserShell = pkgs.zsh;
-
   ########## fonts ################################################################################
 
   fonts.packages = with pkgs; [
@@ -192,27 +191,12 @@
     nerd-fonts.meslo-lg
   ];
 
-  ########## environment and programs #############################################################
+  ########## zsh as default shell #################################################################
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
   environment = {
     shells = [ pkgs.zsh ];
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; [
-      rocmPackages.amdsmi
-    ];
-  };
-
-  hardware.steam-hardware.enable = true;
-  programs = {
-    steam = {
-      enable = true;
-      # hidapi is required by Steam's controller firmware updater. Without it
-      # Steam logs `ImportError: Unable to load ... libhidapi-hidraw.so` and
-      # shows "Failed to update Steam Controller firmware" for the
-      # Steam Controller 2026.
-      # TODO: remove when library is shipped by Steam itself
-      extraPackages = with pkgs; [ hidapi ];
-    };
-    zsh.enable = true;
   };
 }
