@@ -74,6 +74,7 @@
       fzf.enable = true;
       git = {
         enable = true;
+        enableLfs = true;
         askpass = "${pkgs.before-plasma5-drop.libsForQt5.ksshaskpass}/bin/ksshaskpass";
         includes = [ { path = config.sops.secrets.git_user_information.path; } ];
       };

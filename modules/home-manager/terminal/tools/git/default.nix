@@ -11,6 +11,7 @@ in
 {
   options.my.terminal.tools.git = {
     enable = lib.mkEnableOption "Enable my Home Manager module for git";
+    enableLfs = lib.mkEnableOption "Enable git lfs";
     userName = lib.mkOption {
       default = null;
       type = lib.types.nullOr lib.types.str;
@@ -37,6 +38,7 @@ in
     programs.git = {
       enable = true;
       includes = cfg.includes;
+      lfs.enable = cfg.enableLfs;
       settings = {
         user = {
           name = lib.mkIf (cfg.userName != null) cfg.userName;
