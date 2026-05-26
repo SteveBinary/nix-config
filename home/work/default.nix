@@ -33,7 +33,6 @@
         rider.enable = true;
         rustrover.enable = true;
       };
-      vscode.enable = true;
       zed = {
         enable = true;
         fontSizes = {
