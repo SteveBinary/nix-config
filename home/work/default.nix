@@ -57,8 +57,11 @@
       bash = {
         enable = true;
         bashrcExtra = ''
-          # changing the default shell for a user is not allowed, so this workaround is needed
-          if [ -z "$ZSH_VERSION" ]; then exec ${config.home.homeDirectory}/.nix-profile/bin/zsh; fi
+          # Changing the default shell for a user is not allowed, so this workaround is needed.
+          # Also only switch to ZSH when the session is interactive.
+          if [ -z "$ZSH_VERSION" ] && [[ $- == *i* ]]; then
+            exec ${config.home.homeDirectory}/.nix-profile/bin/zsh
+          fi
         '';
       };
       zsh.enable = true;
@@ -87,6 +90,7 @@
       defaultSearchEngine = "google";
       enableAppArmorPreparationForUbuntu = true;
       extensions = {
+        bitwarden.enable = true;
         plasmaBrowserIntegration = {
           enable = true;
           nativeMessagingHostPackage = pkgs.before-plasma5-drop.libsForQt5.plasma-browser-integration;
