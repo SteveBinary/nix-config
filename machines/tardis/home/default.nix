@@ -155,6 +155,7 @@
       localsend
       obsidian
       protonmail-bridge-gui
+      proton-vpn
       signal-desktop
       yubioath-flutter
       thunderbird
