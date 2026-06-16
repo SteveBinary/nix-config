@@ -163,6 +163,8 @@
       xeyes
       ytdownloader
 
+      (llm-agents.claude-code.override { disableTelemetry = true; })
+
       my.json2nix
       my.rambo
       my.x86-64-level
