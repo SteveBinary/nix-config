@@ -132,7 +132,7 @@
     username = vars.user.name;
     homeDirectory = vars.user.home;
     preferXdgDirectories = true;
-    stateVersion = "26.05";
+    stateVersion = "26.11";
   };
 
   sops.secrets = {

@@ -33,10 +33,16 @@
 
   ########## NixOS ################################################################################
 
-  system.stateVersion = "26.05"; # Change with great care!
+  system.stateVersion = "26.11"; # Change with great care!
 
   nixpkgs = {
     config.allowUnfree = true;
+    # TODO: remove when Bitwarden desktop doesn't depend on Electron 39 anymore
+    # see: https://github.com/nixos/nixpkgs/issues/526914
+    # see: https://github.com/bitwarden/clients/pull/20448
+    config.permittedInsecurePackages = [
+      "electron-39.8.10"
+    ];
     overlays = with overlays; [
       pkgs-stable
       fixes

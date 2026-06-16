@@ -8,7 +8,7 @@
 {
   ########## NixOS ################################################################################
 
-  system.stateVersion = "26.05"; # Change with great care!
+  system.stateVersion = "26.11"; # Change with great care!
 
   nixpkgs.config.allowUnfree = true;
 

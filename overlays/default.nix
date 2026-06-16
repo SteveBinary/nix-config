@@ -4,11 +4,7 @@
   ########## fixes ################################################################################
 
   fixes = final: prev: {
-    # remove when fixed: https://github.com/NixOS/nixpkgs/issues/513245
-    #                    https://github.com/NixOS/nixpkgs/issues/514113
-    openldap = prev.openldap.overrideAttrs {
-      doCheck = !prev.stdenv.hostPlatform.isi686;
-    };
+    # add workarounds / fixes for problems not yet resolved upstream
   };
 
   ########## specific nixpkgs versions ############################################################
