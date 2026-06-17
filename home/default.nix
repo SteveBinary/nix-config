@@ -40,4 +40,9 @@ in
     user.name = builtins.getEnv "USER"; # requires '--impure' when doing 'home-manager switch'
     user.home = "/home/${user.name}";
   };
+  work-workstation = mkHome ./work-workstation rec {
+    system = "x86_64-linux";
+    user.name = builtins.getEnv "USER"; # requires '--impure' when doing 'home-manager switch'
+    user.home = "/home/${user.name}";
+  };
 }

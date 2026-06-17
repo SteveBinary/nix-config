@@ -1,5 +1,6 @@
 keys:
   - &key_work age1hm8n907arplhq9mzvwkwt2whytw0qjgrfarzyhht7kg3mhdpvpgq94v24k
+  - &key_work_workstation age1wyxzrrxvjf4psv0phjdnsasrm4c34y5a2tg4uwszec0jx9huqufqx89xez
   - &key_personal age1xekcptfw72xp5sxa7arjdu0lqkc7s5c2km6eurzxf6zjv5va6qjq60uwru
   - &key_orville age1rn2d32etdp6wa42k9atysxuz3698fflweu3efrn74x790hle2dpswklr9q
 
@@ -8,6 +9,8 @@ creation_rules:
     age: *key_personal
   - path_regex: home/work/secrets\.yaml$
     age: *key_work
+  - path_regex: home/work-workstation/secrets\.yaml$
+    age: *key_work_workstation
   - path_regex: machines/orville/(secrets\.yaml|container-services/.*/secrets\.env)$
     key_groups:
       - age:
