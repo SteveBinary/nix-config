@@ -43,10 +43,7 @@
       };
     };
     kubernetes.enable = true;
-    mqtt-explorer = {
-      enable = true;
-      noSandbox = true;
-    };
+    mqtt-explorer.enable = true;
   };
 
   my.terminal = {
