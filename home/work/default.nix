@@ -115,6 +115,7 @@
       gh
       keepassxc
       localsend
+      teams-for-linux
       vlc
 
       (llm-agents.claude-code.override { disableTelemetry = true; })
