@@ -98,25 +98,28 @@ in
         (lib.optionalString
           (config.my.terminal.tools.zellij.enable && !config.programs.zellij.enableZshIntegration)
           ''
-            # autostart zellij when running in terminals: ${concatZellijAutoStartTerminals ", "}
-            terminals_that_trigger_zellij_autostart=(${concatZellijAutoStartTerminals " "})
+            # only when it is not an SSH session ...
+            if [ -z "$SSH_CONNECTION" ]; then
+              # autostart zellij when running in terminals: ${concatZellijAutoStartTerminals ", "}
+              terminals_that_trigger_zellij_autostart=(${concatZellijAutoStartTerminals " "})
 
-            # autostart zellij when running via processes: ${concatZellijAutoStartProcessNames ", "}
-            parent_process_names_that_trigger_zellij_autostart=(${concatZellijAutoStartProcessNames " "})
+              # autostart zellij when running via processes: ${concatZellijAutoStartProcessNames ", "}
+              parent_process_names_that_trigger_zellij_autostart=(${concatZellijAutoStartProcessNames " "})
 
-            current_terminal="$TERM"
-            current_parent_process_name="$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d ' ' -f 4) | tail -1 | sed 's/ .*$//'))"
+              current_terminal="$TERM"
+              current_parent_process_name="$(basename "/"$(ps -o cmd -f -p $(cat /proc/$(echo $$)/stat | cut -d ' ' -f 4) | tail -1 | sed 's/ .*$//'))"
 
-            if (($terminals_that_trigger_zellij_autostart[(Ie)$current_terminal])); then
-              eval "$(zellij setup --generate-auto-start zsh)"
-            elif (($parent_process_names_that_trigger_zellij_autostart[(Ie)$current_parent_process_name])); then
-              eval "$(zellij setup --generate-auto-start zsh)"
+              if (($terminals_that_trigger_zellij_autostart[(Ie)$current_terminal])); then
+                eval "$(zellij setup --generate-auto-start zsh)"
+              elif (($parent_process_names_that_trigger_zellij_autostart[(Ie)$current_parent_process_name])); then
+                eval "$(zellij setup --generate-auto-start zsh)"
+              fi
+
+              unset current_terminal
+              unset terminals_that_trigger_zellij_autostart
+              unset current_parent_process_name
+              unset parent_process_names_that_trigger_zellij_autostart
             fi
-
-            unset current_terminal
-            unset terminals_that_trigger_zellij_autostart
-            unset current_parent_process_name
-            unset parent_process_names_that_trigger_zellij_autostart
           ''
         )
         cfg.zshrcExtra
