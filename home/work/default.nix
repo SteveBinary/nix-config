@@ -115,6 +115,7 @@
       gh
       keepassxc
       localsend
+      obsidian
       teams-for-linux
       vlc
 
