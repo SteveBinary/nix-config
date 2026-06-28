@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  nixosConfig ? null,
   ...
 }:
 
@@ -102,6 +103,11 @@ in
           };
           Effect-overview = {
             BorderActivate = 9;
+          };
+          Xwayland = lib.mkIf (nixosConfig != null && nixosConfig.programs.steam.enable) {
+            # Apps claiming to be 'steam' are allowed to control the pointer and keyboard.
+            # -> Allows using the Steam controller, for example, to control the volume while being in a game.
+            XwaylandEisNoPromptApps = "steam";
           };
         };
       };
