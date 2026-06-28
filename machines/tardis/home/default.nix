@@ -144,7 +144,7 @@
       # desktop applications
       android-studio
       android-tools # TODO: might need to be put into the system packages
-      bitwarden-desktop
+      # bitwarden-desktop
       bottles
       czkawka-full
       gimp
