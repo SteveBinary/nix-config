@@ -1,5 +1,3 @@
-{ ... }:
-
 let
   preventSystemSuspendWhile =
     description: command:

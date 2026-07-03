@@ -1,10 +1,3 @@
-{ ... }:
-
-let
-  preventSystemSuspendWhile =
-    description: command:
-    ''systemd-inhibit --who "${description}" --why "initiated by user" --what "idle:sleep:shutdown" --mode "block" \${"\n      "}/usr/bin/env zsh -c '${command}${"'"}'';
-in
 {
   home.file = {
     ".hushlogin".text = ""; # disable the login banner; also disables the warning "groups: cannot find name for group ID ..." because of LDAP
@@ -32,7 +25,7 @@ in
 
       # make a Home Manager switch
       @switch:
-          ${preventSystemSuspendWhile "Home Manager Switch" "home-manager --impure --log-format internal-json switch --flake {{ justfile_directory() }}#work-workstation |& nom --json"}
+          home-manager --impure --log-format internal-json switch --flake {{ justfile_directory() }}#work-workstation |& nom --json
 
       # update the flake.lock
       update-flake:
@@ -49,7 +42,7 @@ in
       collect-garbage:
           #!/usr/bin/env zsh
           before=$(df --human-readable --output=used / | sed 1d | sed "s/[[:space:]]*//")
-          ${preventSystemSuspendWhile "Garbage Collection" "nix-collect-garbage"}
+          nix-collect-garbage
           after=$(df --human-readable --output=used / | sed 1d | sed "s/[[:space:]]*//")
           echo "=================================================="
           echo "Effect of garbage collection on disk usage"
@@ -60,8 +53,8 @@ in
       collect-garbage-all:
           #!/usr/bin/env zsh
           before=$(df --human-readable --output=used / | sed 1d | sed "s/[[:space:]]*//")
-          ${preventSystemSuspendWhile "Garbage Collection (all)" "nix-collect-garbage -d"}
-          ${preventSystemSuspendWhile "Nix Store Optimise" "nix store optimise"}
+          nix-collect-garbage -d
+          nix store optimise
           after=$(df --human-readable --output=used / | sed 1d | sed "s/[[:space:]]*//")
           echo "=================================================="
           echo "Effect of garbage collection on disk usage"
