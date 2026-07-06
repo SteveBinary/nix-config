@@ -13,6 +13,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # Let Atuin own Ctrl-R even if fzf is enabled.
+    programs.fzf.historyWidget.command = "";
+
     programs.atuin = {
       enable = true;
       enableBashIntegration = true;
