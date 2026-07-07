@@ -125,6 +125,9 @@ in
           accelerationProfile = "none";
         }
       ];
+      powerdevil.AC = {
+        autoSuspend.action = "nothing";
+      };
       panels = [
         {
           screen = "all";
