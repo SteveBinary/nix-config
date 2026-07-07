@@ -13,8 +13,16 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.sessionVariables = {
-      ZELLIJ_AUTO_EXIT = "true";
+    home = {
+      sessionVariables = {
+        # There is a guard around zellij's auto-start in the ZSH config, so that zellij auto-starts only in certain terminals and never in an SSH session.
+        # When when the conditions for auto-start are matched, these variables will be respected.
+        ZELLIJ_AUTO_ATTACH = "true";
+        ZELLIJ_AUTO_EXIT = "true";
+      };
+      shellAliases = {
+        z = "zellij";
+      };
     };
 
     programs.zellij = {
