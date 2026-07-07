@@ -50,7 +50,10 @@
     tools = {
       atuin.enable = true;
       bat.enable = true;
-      btop.enable = true;
+      btop = {
+        enable = true;
+        package = pkgs.btop-rocm;
+      };
       direnv.enable = true;
       fzf.enable = true;
       git = {
@@ -156,6 +159,7 @@
       obsidian
       protonmail-bridge-gui
       proton-vpn
+      rocmPackages.rocm-smi
       signal-desktop
       yubioath-flutter
       thunderbird
