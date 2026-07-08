@@ -14,35 +14,37 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      btop
-      curl
-      delta
-      dive
-      dnsutils
-      dua
-      fastfetch
-      fd
-      file
-      hexyl
-      hyperfine
-      iw
-      jq
-      killall
-      lshw
-      lsscsi
-      mtr
-      parallel
-      pciutils
-      ripgrep
-      tldr
-      tokei
-      tree
-      unzip
-      usbutils
-      wget
-      xh
-      yq-go
-    ];
+    home.packages =
+      with pkgs;
+      [
+        curl
+        delta
+        dive
+        dnsutils
+        dua
+        fastfetch
+        fd
+        file
+        hexyl
+        hyperfine
+        iw
+        jq
+        killall
+        lshw
+        lsscsi
+        mtr
+        parallel
+        pciutils
+        ripgrep
+        tldr
+        tokei
+        tree
+        unzip
+        usbutils
+        wget
+        xh
+        yq-go
+      ]
+      ++ lib.optional (!config.my.terminal.tools.btop.enable) pkgs.btop;
   };
 }
