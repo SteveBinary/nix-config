@@ -6,7 +6,7 @@
 }:
 
 # IMPORTANT:
-# Zen is currently designed around the config files being mutable.
+# Zed is currently designed around the config files being mutable.
 # Home Manager has implemented a mechanism to merge the current config files with the generated one.
 # It copies the merged files back into the expected location (~/.config/zed/...).
 # In order to make these files writable by Zed, they are not a symlink into the nix store.
@@ -21,10 +21,7 @@ in
 {
   options.my.development.editors.zed = {
     enable = lib.mkEnableOption "Enable Zed";
-    package = lib.mkOption {
-      type = lib.types.package;
-      default = pkgs.zed-editor;
-    };
+    package = lib.mkPackageOption pkgs "zed-editor" { };
     fontSizes = lib.mkOption {
       default = { };
       type = lib.types.submodule {
@@ -51,43 +48,40 @@ in
       enable = true;
       package = cfg.package;
       extensions = [
-        "asciidoc"
-        "basher"
         "catppuccin"
         "catppuccin-icons"
-        "docker-compose"
-        "dockerfile"
-        "gleam"
-        "groovy"
-        "helm"
-        "html"
-        "java"
-        "javascript"
-        "json"
-        "kotlin"
-        "nginx"
         "nix"
-        "toml"
-        "typst"
       ];
       userSettings = {
         auto_update = false;
         base_keymap = "JetBrains";
-        format_on_safe = "off";
-        formatter = "language_server";
         hour_format = "hour24";
         load_direnv = "shell_hook";
+        default_open_behavior = "new_window";
+
+        autosave = "on_focus_change";
+        format_on_save = "off";
+        formatter = "none";
         buffer_font_family = "FiraCode Nerd Font";
+        scroll_beyond_last_line = "vertical_scroll_margin";
+        mouse_wheel_zoom = true;
+
         terminal = {
           font_family = "MesloLGM Nerd Font";
         }
         // lib.optionalAttrs (cfg.fontSizes.terminal != null) {
           font_size = cfg.fontSizes.terminal;
         };
+
         telemetry = {
           diagnostics = false;
           metrics = false;
         };
+
+        edit_predictions = {
+          allow_data_collection = "no";
+        };
+
         theme = {
           mode = "dark";
           light = "Catppuccin Latte";
@@ -98,6 +92,38 @@ in
           light = "Catppuccin Latte";
           dark = "Catppuccin Mocha";
         };
+
+        git = {
+          hunk_style = "unstaged_hollow";
+          inline_blame.enabled = false;
+        };
+
+        title_bar = {
+          show_sign_in = false;
+        };
+        outline_panel = {
+          dock = "left";
+          indent_size = 15.0;
+        };
+        agent = {
+          dock = "right";
+          sidebar_side = "right";
+        };
+        collaboration_panel = {
+          dock = "left";
+          button = false;
+        };
+        git_panel = {
+          dock = "left";
+          entry_primary_click_action = "file_diff";
+          status_style = "label_color";
+          file_icons = true;
+          tree_view = true;
+        };
+        project_panel = {
+          dock = "left";
+          indent_size = 15.0;
+        };
       }
       // lib.optionalAttrs (cfg.fontSizes.ui != null) {
         ui_font_size = cfg.fontSizes.ui;
@@ -106,20 +132,7 @@ in
         buffer_font_size = cfg.fontSizes.editor;
       };
       extraPackages = with pkgs; [
-        bash-language-server # Bash
-        helm-ls # Helm
-        jdt-language-server # Java
-        kotlin-language-server # Kotlin
-        nginx-language-server # nginx
         nixd # Nix
-        python313Packages.python-lsp-server # Python
-        rust-analyzer # Rust
-        shellcheck # shell script analysis
-        taplo # TOML
-        tinymist # Typst (language server)
-        typescript-language-server # JavaScript, TypeScript
-        typst # Typst
-        yaml-language-server # YAML
       ];
     };
   };
