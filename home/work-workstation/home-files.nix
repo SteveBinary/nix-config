@@ -1,3 +1,5 @@
+{ inputs, ... }:
+
 {
   home.file = {
     ".hushlogin".text = ""; # disable the login banner; also disables the warning "groups: cannot find name for group ID ..." because of LDAP
@@ -9,7 +11,7 @@
 
     "nix-config/.directory".text = ''
       [Desktop Entry]
-      Icon=./assets/images/folder-nix-snowflake-light.svg
+      Icon=${inputs.self}/assets/images/folder-nix-snowflake-light.svg
     '';
 
     "nix-config/justfile".text = ''

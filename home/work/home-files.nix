@@ -1,3 +1,5 @@
+{ inputs, ... }:
+
 let
   preventSystemSuspendWhile =
     description: command:
@@ -14,7 +16,7 @@ in
 
     "nix-config/.directory".text = ''
       [Desktop Entry]
-      Icon=./assets/images/folder-nix-snowflake-light.svg
+      Icon=${inputs.self}/assets/images/folder-nix-snowflake-light.svg
     '';
 
     "nix-config/justfile".text = ''

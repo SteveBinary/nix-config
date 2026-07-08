@@ -1,6 +1,7 @@
 {
   config,
   vars,
+  inputs,
   ...
 }:
 
@@ -18,12 +19,12 @@ in
 
     "nix-config/.directory".text = ''
       [Desktop Entry]
-      Icon=./assets/images/folder-nix-snowflake-light.svg
+      Icon=${inputs.self}/assets/images/folder-nix-snowflake-light.svg
     '';
 
     "Nextcloud/.directory".text = ''
       [Desktop Entry]
-      Icon=${config.home.homeDirectory}/nix-config/assets/images/folder-nextcloud-light.svg
+      Icon=${inputs.self}/assets/images/folder-nextcloud-light.svg
     '';
 
     "nix-config/justfile".text = ''
