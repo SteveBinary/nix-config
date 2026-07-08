@@ -51,6 +51,17 @@ in
         init.defaultbranch = "main";
         push.autoSetupRemote = true;
 
+        # IntelliJ mergetool
+        # TODO: make this configurable, more generic, maybe configure all IDEs and make the default mergetool configurable
+        merge.tool = "intellij";
+        mergetool = {
+          keepBackup = false;
+          intellij = {
+            cmd = ''idea merge $(realpath "$LOCAL") $(realpath "$REMOTE") $(realpath "$BASE") $(realpath "$MERGED") 2>/dev/null'';
+            trustExitCode = true;
+          };
+        };
+
         # diff syntax highlighting with delta
         core.pager = "${pkgs.delta}/bin/delta";
         interactive.diffFilter = "${pkgs.delta}/bin/delta --color-only";
