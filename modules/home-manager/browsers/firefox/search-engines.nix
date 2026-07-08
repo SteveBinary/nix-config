@@ -79,11 +79,15 @@
       definedAliases = [ "@opt" ];
       urls = [
         {
-          template = "https://home-manager-options.extranix.com";
+          template = "https://search.nixos.org/options";
           params = [
             {
-              name = "release";
-              value = "master";
+              name = "channel";
+              value = "unstable";
+            }
+            {
+              name = "source";
+              value = "home_manager";
             }
             {
               name = "query";
@@ -92,7 +96,7 @@
           ];
         }
       ];
-      icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+      icon = ./assets/home-manager-logo.svg;
     };
     "noogle" = {
       name = "Noogle";
