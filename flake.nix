@@ -44,6 +44,7 @@
     json2nix = {
       url = "github:SteveBinary/json2nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
