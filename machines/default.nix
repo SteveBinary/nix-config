@@ -20,7 +20,7 @@ let
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit vars;
+              inherit inputs vars;
             };
             sharedModules = [
               inputs.self.homeManagerModules.default
