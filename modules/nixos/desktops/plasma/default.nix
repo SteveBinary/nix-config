@@ -16,7 +16,14 @@ in
   config = lib.mkIf cfg.enable {
     services = {
       desktopManager.plasma6.enable = true;
-      displayManager.plasma-login-manager.enable = true;
+      displayManager.plasma-login-manager = {
+        enable = true;
+        # TODO: setting BreezeDark theme in PLM doesn't work:
+        # settings = {
+        #   General.ColorScheme = "BreezeDark";
+        #   Theme.LookAndFeel = "org.kde.breezedark.desktop";
+        # };
+      };
     };
 
     # Workaround for the long wait time when logging in. Seems to be a bug in SDDM / Plasma Login Manager.

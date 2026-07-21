@@ -34,6 +34,7 @@ in
       workspace = {
         lookAndFeel = "org.kde.breezedark.desktop";
         theme = "breeze-dark";
+        colorScheme = "BreezeDark";
       };
       fonts.fixedWidth = {
         family = "FiraCode Nerd Font";
