@@ -37,6 +37,7 @@
         };
       };
     };
+    mqtt-explorer.enable = true;
   };
 
   my.terminal = {
