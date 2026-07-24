@@ -51,7 +51,14 @@ in
         "catppuccin"
         "catppuccin-icons"
         "nix"
+        "toml"
+        "typst"
       ];
+
+      #############################################################################################
+      # settings                                                                                  #
+      #############################################################################################
+
       userSettings = {
         auto_update = false;
         base_keymap = "JetBrains";
@@ -130,9 +137,63 @@ in
       }
       // lib.optionalAttrs (cfg.fontSizes.editor != null) {
         buffer_font_size = cfg.fontSizes.editor;
+      }
+
+      #############################################################################################
+      # language support                                                                          #
+      #############################################################################################
+
+      // {
+        languages = {
+          Nix = {
+            language_servers = [
+              "nixd"
+              "!nil"
+            ];
+            formatter = {
+              external = {
+                command = "nixfmt";
+                arguments = [
+                  "--quiet"
+                  "-"
+                ];
+              };
+            };
+          };
+          Typst = {
+            formatter = {
+              external = {
+                command = "typstyle";
+              };
+            };
+          };
+        };
+        lsp = {
+          nixd = {
+            binary.path_lookup = true;
+          };
+          tinymist = {
+            initialization_options = {
+              # enable background preview, open browser at 127.0.0.1:23635 to see the live preview
+              preview.background.enabled = false;
+            };
+            settings = {
+              # compile the PDF on save for the `main.typ` file in the project root
+              exportPdf = "onSave";
+              outputPath = "$root/target/$dir/$name";
+            };
+          };
+        };
       };
+
       extraPackages = with pkgs; [
-        nixd # Nix
+        # formatters
+        nixfmt
+        typstyle
+
+        # language servers
+        nixd
+        tinymist
       ];
     };
   };
