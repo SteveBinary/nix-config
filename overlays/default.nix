@@ -44,17 +44,17 @@
 
   json2nix = final: prev: {
     my = prev.my or { } // {
-      json2nix = inputs.json2nix.packages."${prev.stdenv.hostPlatform.system}".default;
+      json2nix = inputs.json2nix.packages.${prev.stdenv.hostPlatform.system}.default;
     };
   };
 
   rambo = final: prev: {
     my = prev.my or { } // {
-      rambo = inputs.rambo.packages."${prev.stdenv.hostPlatform.system}".default;
+      rambo = inputs.rambo.packages.${prev.stdenv.hostPlatform.system}.default;
     };
   };
 
   ########## miscellaneous ########################################################################
 
-  llm-agents = inputs.llm-agents.overlays.default;
+  llm-agents = inputs.llm-agents.overlays.shared-nixpkgs;
 }
