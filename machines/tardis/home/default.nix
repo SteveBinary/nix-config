@@ -72,6 +72,7 @@
   };
 
   my.browsers = {
+    chromium.enable = true;
     firefox = {
       enable = true;
       theme = "dark";
