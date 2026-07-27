@@ -101,7 +101,7 @@ in
         userChrome = lib.mkIf cfg.extensions.sidebery.enable (
           lib.strings.concatLines [
             (
-              # https://github.com/MrOtherGuy/firefox-csshacks/blob/55cdb2938da52407aeff7093c979dafb7782e7c9/chrome/hide_tabs_toolbar_v2.css
+              # https://github.com/MrOtherGuy/firefox-csshacks/blob/52e47afe74182b4a31d6e2a229e687daa3916c7e/chrome/hide_tabs_toolbar_v2.css
               builtins.readFile ./assets/hide_tabs_toolbar_v2.css
             )
             ''

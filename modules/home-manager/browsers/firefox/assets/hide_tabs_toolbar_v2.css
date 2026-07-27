@@ -5,7 +5,20 @@ See the above repository for updates as well as full license text. */
 
 @media -moz-pref("sidebar.verticalTabs"){
   #sidebar-launcher-splitter,
+  #vertical-tabs,
+  #sidebar-tools-and-extensions-splitter,
   #sidebar-main{
+    visibility: collapse;
+  }
+  #sidebar-container[sidebar-launcher-expanded]{
+    width: unset !important;
+    --uc-flex-direction: column;
+  }
+  .tools-and-extensions[orientation="horizontal"],
+  :where(#sidebar-tools-and-extensions-splitter) + .buttons-wrapper{
+    flex-direction: var(--uc-flex-direction, revert-rule) !important;
+  }
+  #sidebar-container:not([sidebar-launcher-expanded]){
     visibility: collapse;
   }
 }
