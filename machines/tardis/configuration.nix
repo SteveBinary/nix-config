@@ -13,6 +13,11 @@
     inputs.nixos-hardware.nixosModules.framework-16-7040-amd
   ];
 
+  # Prevent screen artifacts. This negatively impacts battery life ...
+  # TODO: this might get fixed upstream at some point (nixos-hardware or kernel)
+  # see: https://github.com/NixOS/nixos-hardware/pull/1692
+  boot.kernelParams = lib.mkAfter [ "amdgpu.dcdebugmask=0x410" ];
+
   ########## My NixOS modules #####################################################################
 
   my = {
