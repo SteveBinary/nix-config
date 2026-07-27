@@ -24,8 +24,8 @@ in
       kubectx
       kubelogin-oidc
       kubernetes-helm
-      fluxcd
-      minikube
+      # fluxcd
+      # minikube
     ];
 
     home.shellAliases = lib.optionalAttrs cfg.setShellAliases {
