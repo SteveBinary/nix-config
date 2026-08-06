@@ -37,6 +37,8 @@
 
   "intl.accept_languages" = "de,en";
 
+  "middlemouse.paste" = false;
+
   "network.protocol-handler.external.mailto" = false;
 
   "signon.management.page.breach-alerts.enabled" = false;

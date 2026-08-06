@@ -35,6 +35,7 @@ in
         lookAndFeel = "org.kde.breezedark.desktop";
         theme = "breeze-dark";
         colorScheme = "BreezeDark";
+        enableMiddleClickPaste = false;
       };
       fonts.fixedWidth = {
         family = "FiraCode Nerd Font";
