@@ -24,6 +24,7 @@
     common-utilities.enable = true;
     desktop.plasma.enable = true;
     gaming.steam.enable = true;
+    hardware.probe-rs-tools.enable = true;
     nix.enable = true;
     virtualisation = {
       enableDocker = true;
