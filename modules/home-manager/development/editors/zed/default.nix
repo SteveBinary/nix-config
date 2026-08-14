@@ -105,6 +105,11 @@ in
           inline_blame.enabled = false;
         };
 
+        node = {
+          path = lib.getExe pkgs.nodejs;
+          npm_path = lib.getExe' pkgs.nodejs "npm";
+        };
+
         title_bar = {
           show_sign_in = false;
         };
