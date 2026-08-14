@@ -193,10 +193,13 @@
       isNormalUser = true;
       home = vars.user.home;
       extraGroups = [
-        # "adbusers" # android debug bridge
-        "dialout" # e.g. for espflash
-        "networkmanager"
         "wheel"
+        "networkmanager"
+        # "adbusers" # android debug bridge
+
+        # interfacing with external devices like ESP32 and Raspberry Pi Pico
+        "dialout"
+        "plugdev"
       ];
     };
   };
