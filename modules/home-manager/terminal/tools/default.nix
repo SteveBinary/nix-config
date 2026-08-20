@@ -7,6 +7,7 @@
     ./fzf
     ./git
     ./oh-my-posh
+    ./opencode
     ./utilities
     ./zellij
   ];

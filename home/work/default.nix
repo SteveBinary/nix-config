@@ -76,6 +76,10 @@
         includes = [ { path = config.sops.secrets.git_user_information.path; } ];
       };
       oh-my-posh.enable = true;
+      opencode = {
+        enable = true;
+        providers = [ "nexus" ];
+      };
       utilities.enable = true;
       zellij.enable = true;
     };
