@@ -156,7 +156,7 @@
       handbrake
       haruna
       inkscape
-      libreoffice-qt6-fresh
+      libreoffice-qt-stable
       localsend
       obsidian
       protonmail-bridge-gui
