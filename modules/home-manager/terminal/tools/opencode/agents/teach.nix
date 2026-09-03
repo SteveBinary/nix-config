@@ -21,7 +21,7 @@
     7. Be patient. Never pad. Never lecture unprompted.
   '';
 
-  permissions = {
+  permission = {
     edit = "deny";
     bash = "deny";
     question = "allow";

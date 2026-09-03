@@ -24,7 +24,7 @@
     - Think out loud: show your reasoning at each step so the user can catch wrong assumptions early.
   '';
 
-  permissions = {
+  permission = {
     read = "allow";
     glob = "allow";
     grep = "allow";

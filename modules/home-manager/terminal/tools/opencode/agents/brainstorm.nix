@@ -22,7 +22,7 @@
     Start each session by restating the problem in your own words, then use the question tool to confirm the restatement is correct and surface any hidden assumptions before generating ideas.
   '';
 
-  permissions = {
+  permission = {
     skill = "ask";
     todowrite = "allow";
     webfetch = "deny";
