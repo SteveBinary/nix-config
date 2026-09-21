@@ -46,7 +46,6 @@
     overlays = with overlays; [
       pkgs-stable
       fixes
-      llm-agents
       my-lib
       my-pkgs
       json2nix

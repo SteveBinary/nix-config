@@ -15,7 +15,6 @@
   nixpkgs.overlays = with overlays; [
     pkgs-before-plasma5-drop
     fixes
-    llm-agents
     my-lib
     my-pkgs
   ];
@@ -103,8 +102,6 @@
       localsend
       obsidian
       vlc
-
-      (llm-agents.claude-code.override { disableTelemetry = true; })
 
       my.x86-64-level
     ];
