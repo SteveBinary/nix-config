@@ -98,22 +98,6 @@ in
       profiles.default = {
         id = 0;
         settings = import ./profile-settings.nix { inherit lib cfg; };
-        userChrome = lib.mkIf cfg.extensions.sidebery.enable (
-          lib.strings.concatLines [
-            (
-              # https://github.com/MrOtherGuy/firefox-csshacks/blob/52e47afe74182b4a31d6e2a229e687daa3916c7e/chrome/hide_tabs_toolbar_v2.css
-              builtins.readFile ./assets/hide_tabs_toolbar_v2.css
-            )
-            ''
-              /* --- my own additions --- */
-
-              /* hide the header in the sidebar - remove the dropdown menu and close button */
-              #sidebar-header {
-                display: none;
-              }
-            ''
-          ]
-        );
         search = {
           force = true;
           default = cfg.defaultSearchEngine;
@@ -124,6 +108,34 @@ in
               cfg.defaultSearchEngine
             ];
         };
+        userChrome = lib.mkIf cfg.extensions.sidebery.enable (
+          lib.strings.concatLines [
+            (
+              # https://github.com/MrOtherGuy/firefox-csshacks/blob/52e47afe74182b4a31d6e2a229e687daa3916c7e/chrome/hide_tabs_toolbar_v2.css
+              builtins.readFile ./assets/hide_tabs_toolbar_v2.css
+            )
+            # To open the developer tools for Firefox itself:
+            #   1. Open the normal developer tools (F12)
+            #   2. Click the three dots
+            #   3. Open "Settings"
+            #   4. Enable the following settings under "Advanced settings"
+            #      - Enable browser chrome and add-on debugging toolboxes
+            #      - Enable remote debugging
+            #   5. Restart Firefox
+            #   6. After work is done, disable the two settings again
+            ''
+              /* ---------- my own additions ---------- */
+
+              #sidebar-panel-header {
+                display: none; /* remove the dropdown menu and close button */
+              }
+
+              #sidebar-box {
+                padding-inline-start: 0 !important; /* remove the left padding left of the sidebar */
+              }
+            ''
+          ]
+        );
       };
     };
   };

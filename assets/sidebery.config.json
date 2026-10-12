@@ -141,7 +141,7 @@
     "tabsReloadLimitNotif": true,
     "showNewTabBtns": true,
     "newTabBarPosition": "after_tabs",
-    "tabsPanelSwitchActMove": false,
+    "tabsPanelSwitchActMove": true,
     "tabsPanelSwitchActMoveAuto": true,
     "tabsUrlInTooltip": "full",
     "tabsContainerInTooltip": true,
@@ -308,56 +308,12 @@
   },
   "sidebar": {
     "nav": [
-      "L1k_tUKVBLyo",
-      "-AXRsLA9tswm",
-      "bAb-bfpz3zjj",
-      "add_tp",
-      "sp-0",
-      "create_snapshot",
-      "settings"
+      "wE3j7u25c2iW"
     ],
     "panels": {
-      "bAb-bfpz3zjj": {
+      "wE3j7u25c2iW": {
         "type": 2,
-        "id": "bAb-bfpz3zjj",
-        "name": "Tabs",
-        "color": "toolbar",
-        "iconSVG": "icon_tabs",
-        "iconIMGSrc": "",
-        "iconIMG": "",
-        "lockedPanel": false,
-        "skipOnSwitching": false,
-        "noEmpty": false,
-        "newTabCtx": "none",
-        "dropTabCtx": "none",
-        "moveRules": [],
-        "moveExcludedTo": -1,
-        "bookmarksFolderId": -1,
-        "newTabBtns": [],
-        "srcPanelConfig": null
-      },
-      "-AXRsLA9tswm": {
-        "type": 2,
-        "id": "-AXRsLA9tswm",
-        "name": "Tabs",
-        "color": "toolbar",
-        "iconSVG": "icon_tabs",
-        "iconIMGSrc": "",
-        "iconIMG": "",
-        "lockedPanel": false,
-        "skipOnSwitching": false,
-        "noEmpty": false,
-        "newTabCtx": "none",
-        "dropTabCtx": "none",
-        "moveRules": [],
-        "moveExcludedTo": -1,
-        "bookmarksFolderId": -1,
-        "newTabBtns": [],
-        "srcPanelConfig": null
-      },
-      "L1k_tUKVBLyo": {
-        "type": 2,
-        "id": "L1k_tUKVBLyo",
+        "id": "wE3j7u25c2iW",
         "name": "Tabs",
         "color": "toolbar",
         "iconSVG": "icon_tabs",
@@ -516,7 +472,7 @@
       "removePanel"
     ]
   },
-  "sidebarCSS": "#root.root {--frame-bg: rgb(43, 42, 51);}\n#root.root {--general-border-radius: 8px;}\n#root.root {--general-margin: 6px;}\n#root.root {--ntb-btn-height: 45px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 45px;}\n#root.root {--tabs-height: 35px;}\n\n/********** tab bar **********/\n\n.PinnedTabsBar {\n  display: flex;\n  padding: 10px;\n}\n\n.PinnedTabsBar .tab-wrapper {\n  flex-grow: 4;\n}\n\n.PinnedTabsBar .Tab {\n  width: 100%;\n  min-width: 80px;\n}\n\n/********** pinned tabs **********/\n\n.Tab[data-pin=\"true\"][data-active=\"true\"] .body {\n  background: rgb(126, 122, 144);\n  border: 2px solid lightgray;\n  border-radius: var(--tabs-border-radius);\n}\n\n.Tab[data-pin=\"true\"][data-active=\"false\"] .body {\n  border-radius: var(--tabs-border-radius);\n  background: rgb(71, 68, 85);\n}\n\n.Tab[data-pin=\"true\"] .fav {\n  width: 20px;\n  height: 20px;\n}\n\n.Tab[data-pin=\"true\"] .fav-icon {\n  width: 100%;\n  height: 100%;\n}\n\n/********** not pinned tabs **********/\n\n.Tab[data-pin=\"false\"][data-active=\"true\"] .body {\n  background: rgb(80, 80, 90);\n}",
+  "sidebarCSS": "#root.root {--frame-bg: rgb(29, 29, 36);}\n#root.root {--general-border-radius: 8px;}\n#root.root {--general-margin: 6px;}\n#root.root {--ntb-btn-height: 45px;}\n#root.root {--tabs-indent: 15px;}\n#root.root {--tabs-pinned-height: 45px;}\n#root.root {--tabs-height: 35px;}\n\n/********** tab bar **********/\n\n.PinnedTabsBar {\n  display: flex;\n  padding: 10px;\n}\n\n.PinnedTabsBar .tab-wrapper {\n  flex-grow: 4;\n}\n\n.PinnedTabsBar .Tab {\n  width: 100%;\n  min-width: 80px;\n}\n\n/********** pinned tabs **********/\n\n.Tab[data-pin=\"true\"][data-active=\"true\"] .body {\n  background: rgb(126, 122, 144);\n  border: 2px solid lightgray;\n  border-radius: var(--tabs-border-radius);\n}\n\n.Tab[data-pin=\"true\"][data-active=\"false\"] .body {\n  border-radius: var(--tabs-border-radius);\n  background: rgb(80, 80, 90);\n}\n\n.Tab[data-pin=\"true\"] .fav {\n  width: 20px;\n  height: 20px;\n}\n\n.Tab[data-pin=\"true\"] .fav-icon {\n  width: 100%;\n  height: 100%;\n}\n\n/********** not pinned tabs **********/\n\n.Tab[data-pin=\"false\"][data-active=\"true\"] .body {\n  background: rgb(80, 80, 90);\n}",
   "ver": "5.6.1",
   "keybindings": {
     "_execute_sidebar_action": "Ctrl+E",
