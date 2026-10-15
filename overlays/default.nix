@@ -3,9 +3,6 @@
 {
   ########## fixes / workarounds for problems not yet resolved upstream ###########################
 
-  fixes = final: prev: {
-  };
-
   ########## specific nixpkgs versions ############################################################
 
   pkgs-stable = final: prev: {

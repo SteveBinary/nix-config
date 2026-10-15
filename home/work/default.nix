@@ -14,7 +14,6 @@
 
   nixpkgs.overlays = with overlays; [
     pkgs-before-plasma5-drop
-    fixes
     my-lib
     my-pkgs
   ];
@@ -149,6 +148,11 @@
     defaultSopsFile = ./secrets.yaml;
     defaultSopsFormat = "yaml";
   };
+
+  # Avoid incompatible MIME databases.
+  # - Ubuntu 24.04 / 26.04 still use shared-mime-info 2.4 while nixpkgs is on a newer and incompatible version (2.5.1 as of discovering this problem).
+  # - This lead to KDE Plasma not being able to start, because of inheritance cycles when combining Ubuntu's and nixpkgs' shared-mime-infos.
+  xdg.mime.sharedMimeInfoPackage = pkgs.before-plasma5-drop.shared-mime-info;
 
   targets.genericLinux = {
     enable = true;
