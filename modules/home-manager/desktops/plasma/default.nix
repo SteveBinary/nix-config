@@ -24,7 +24,6 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       kdePackages.kcolorchooser
-      kdePackages.kdepim-addons
       kdePackages.ksystemlog
     ];
 

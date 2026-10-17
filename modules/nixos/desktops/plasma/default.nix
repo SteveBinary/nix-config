@@ -32,6 +32,9 @@ in
     # Using the fingerprint to unlock (get back from lock screen) and for sudo is still possible.
     security.pam.services.login.fprintAuth = false;
 
+    # Disable the personal information management suite (KMail, Kontact, Merkuro)
+    programs.kde-pim.enable = false;
+
     environment.plasma6.excludePackages = with pkgs.kdePackages; [
       kate
       khelpcenter
