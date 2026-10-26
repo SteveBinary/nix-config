@@ -96,6 +96,7 @@ For step 4 you will need to use this IP address.
        ```nix
        boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
        ```
+       or see [how to setup emulation on Ubuntu](./README.non-NixOS.md#aarch64-linux-packages-on-x86_64-linux-ubuntu-with-nix) 
    - The built image file will be `./result/sd-image/nixos-discovery-sdcard-aarch64-linux.img`
    - It contains the whole _final_ system and is **not** an installer.
      Because we can just flash the complete system image onto the SD card, there is no need for an installer.
