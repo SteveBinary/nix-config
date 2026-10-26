@@ -153,7 +153,7 @@
       bottles
       czkawka-full
       gimp
-      handbrake
+      # handbrake
       haruna
       inkscape
       libreoffice-qt-stable

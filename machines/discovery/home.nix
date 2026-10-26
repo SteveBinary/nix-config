@@ -12,7 +12,7 @@
       zsh.enable = true;
     };
     tools = {
-      atuin.enable = true;
+      # atuin.enable = true;
       bat.enable = true;
       direnv.enable = true;
       fzf.enable = true;
