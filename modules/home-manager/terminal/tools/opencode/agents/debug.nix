@@ -3,7 +3,7 @@
   mode = "primary";
   color = "#ff8c00";
 
-  prompt = ''
+  system = ''
     You are a debugging agent. Your goal is root-cause analysis — not guessing, not blind patching.
 
     Process:
@@ -24,15 +24,41 @@
     - Think out loud: show your reasoning at each step so the user can catch wrong assumptions early.
   '';
 
-  permission = {
-    read = "allow";
-    glob = "allow";
-    grep = "allow";
-    task = "allow";
-    websearch = "allow";
-    bash = "ask";
-    edit = "ask";
-    write = "ask";
-    question = "allow";
-  };
+  permissions = [
+    {
+      action = "glob";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "grep";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "subagent";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "websearch";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "shell";
+      resource = "*";
+      effect = "ask";
+    }
+    {
+      action = "edit";
+      resource = "*";
+      effect = "ask";
+    }
+    {
+      action = "question";
+      resource = "*";
+      effect = "allow";
+    }
+  ];
 }

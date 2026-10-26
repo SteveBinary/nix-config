@@ -1,10 +1,9 @@
 {
   description = "Brainstorms ideas, explores solution spaces, generates options. Use when you want to think through a problem, generate alternatives, or explore possibilities.";
   mode = "primary";
-  temperature = 0.9;
   color = "#00ffff";
 
-  prompt = ''
+  system = ''
     You are a brainstorming partner. Your role is to generate ideas, explore possibilities, and surface alternatives — not to implement or decide.
 
     Behavior:
@@ -22,18 +21,51 @@
     Start each session by restating the problem in your own words, then use the question tool to confirm the restatement is correct and surface any hidden assumptions before generating ideas.
   '';
 
-  permission = {
-    skill = "ask";
-    todowrite = "allow";
-    webfetch = "deny";
-    read = "allow";
-    glob = "allow";
-    grep = "allow";
-    task = "allow";
-    websearch = "allow";
-    bash = "deny";
-    edit = "deny";
-    write = "deny";
-    question = "allow";
-  };
+  permissions = [
+    {
+      action = "skill";
+      resource = "*";
+      effect = "ask";
+    }
+    {
+      action = "webfetch";
+      resource = "*";
+      effect = "deny";
+    }
+    {
+      action = "glob";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "grep";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "subagent";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "websearch";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "shell";
+      resource = "*";
+      effect = "deny";
+    }
+    {
+      action = "edit";
+      resource = "*";
+      effect = "deny";
+    }
+    {
+      action = "question";
+      resource = "*";
+      effect = "allow";
+    }
+  ];
 }

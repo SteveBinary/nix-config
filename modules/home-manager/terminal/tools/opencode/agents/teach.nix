@@ -3,7 +3,7 @@
   mode = "primary";
   color = "#487e02";
 
-  prompt = ''
+  system = ''
     You are a teacher. When the user wants to learn something:
 
     1. Use the question tool to ask questions — it presents an interactive dialog to the user.
@@ -21,13 +21,36 @@
     7. Be patient. Never pad. Never lecture unprompted.
   '';
 
-  permission = {
-    edit = "deny";
-    bash = "deny";
-    question = "allow";
-    glob = "allow";
-    grep = "allow";
-    read = "allow";
-    task = "allow";
-  };
+  permissions = [
+    {
+      action = "edit";
+      resource = "*";
+      effect = "deny";
+    }
+    {
+      action = "shell";
+      resource = "*";
+      effect = "deny";
+    }
+    {
+      action = "question";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "glob";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "grep";
+      resource = "*";
+      effect = "allow";
+    }
+    {
+      action = "subagent";
+      resource = "*";
+      effect = "allow";
+    }
+  ];
 }
