@@ -74,7 +74,7 @@
       };
     };
     kernel.sysctl."vm.swappiness" = 10;
-    kernelPackages = pkgs.linuxPackages_7_2;
+    kernelPackages = pkgs.linuxPackages_7_3;
   };
 
   ########## networking ###########################################################################
@@ -124,7 +124,6 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
     };
     xserver = {
       enable = true;
