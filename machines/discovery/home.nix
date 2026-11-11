@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   my.development = {
     editors.helix.enable = true;

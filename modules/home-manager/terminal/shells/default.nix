@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   imports = [
     ./bash.nix
