@@ -2,8 +2,8 @@
   description = "Modular flake-based nix-config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
+    nixpkgs-stable.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.zst";
     nixpkgs-before-plasma5-drop.url = "github:NixOS/nixpkgs/25303238b95d1eef8109aa76f8de084bf8eeb178";
 
     nixos-hardware = {
