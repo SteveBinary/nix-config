@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   vars,
   ...
@@ -122,6 +121,15 @@
         PasswordAuthentication = "no";
         PubkeyAuthentication = "yes";
       };
+      "tv-box 192.168.178.144" = {
+        Hostname = "192.168.178.144";
+        Port = 22;
+        User = "steve";
+        IdentityFile = config.sops.secrets."ssh_keys/id_tv-box_ed25519".path;
+        IdentitiesOnly = true;
+        PasswordAuthentication = "no";
+        PubkeyAuthentication = "yes";
+      };
     };
   };
 
@@ -129,17 +137,23 @@
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
-      "ssh_keys/id_orville_ed25519" = {
-        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519";
-      };
-      "ssh_keys/id_orville_ed25519_pub" = {
-        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519.pub";
+      "ssh_keys/id_discovery_ed25519_pub" = {
+        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519.pub";
       };
       "ssh_keys/id_discovery_ed25519" = {
         path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519";
       };
-      "ssh_keys/id_discovery_ed25519_pub" = {
-        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519.pub";
+      "ssh_keys/id_orville_ed25519_pub" = {
+        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519.pub";
+      };
+      "ssh_keys/id_orville_ed25519" = {
+        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519";
+      };
+      "ssh_keys/id_tv-box_ed25519_pub" = {
+        path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519.pub";
+      };
+      "ssh_keys/id_tv-box_ed25519" = {
+        path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519";
       };
     };
   };
@@ -161,7 +175,6 @@
       obsidian
       protonmail-bridge-gui
       proton-vpn
-      rocmPackages.rocm-smi
       signal-desktop
       yubioath-flutter
       thunderbird
@@ -190,7 +203,8 @@
 
       # terminal applications
       gcc # mainly to not need to open RustRover from the nix shell
-      rustup
+      rustup # get completions for Rust tools
+      rocmPackages.rocm-smi
     ];
 
     sessionVariables = {
