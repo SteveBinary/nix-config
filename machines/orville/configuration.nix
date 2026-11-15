@@ -101,7 +101,7 @@
     rpcbind.enable = true; # needed for NFS
   };
 
-  ########## localizaiton #########################################################################
+  ########## localization #########################################################################
 
   time.timeZone = "Europe/Berlin";
   console.keyMap = "de";
