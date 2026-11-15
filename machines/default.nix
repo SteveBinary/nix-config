@@ -2,14 +2,15 @@
 
 let
   mkSystem =
-    nixpkgs: vars:
+    nixpkgs: params:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit inputs vars;
+        inherit inputs;
+        inherit (params) vars;
         inherit (inputs.self) overlays;
       };
       modules = [
-        ./${vars.machine}
+        ./${params.vars.machine}
         inputs.self.nixosModules.default
         inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
@@ -20,7 +21,8 @@ let
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = {
-              inherit inputs vars;
+              inherit inputs;
+              inherit (params) vars;
             };
             sharedModules = [
               inputs.self.homeManagerModules.default
@@ -29,31 +31,49 @@ let
             ];
           };
         }
-      ];
+      ]
+      ++ params.extraModules or [ ];
     };
 in
 {
-  discovery = mkSystem inputs.nixpkgs rec {
-    machine = "discovery";
-    user.name = "steve";
-    user.home = "/home/${user.name}";
+  discovery = mkSystem inputs.nixpkgs {
+    vars = rec {
+      machine = "discovery";
+      user.name = "steve";
+      user.home = "/home/${user.name}";
+    };
+    extraModules = [
+      inputs.self.nixosModules.hardware-raspberry-pi-4
+    ];
   };
 
-  orville = mkSystem inputs.nixpkgs-stable rec {
-    machine = "orville";
-    user.name = "steve";
-    user.home = "/home/${user.name}";
+  orville = mkSystem inputs.nixpkgs-stable {
+    vars = rec {
+      machine = "orville";
+      user.name = "steve";
+      user.home = "/home/${user.name}";
+    };
   };
 
-  tardis = mkSystem inputs.nixpkgs rec {
-    machine = "tardis";
-    user.name = "steve";
-    user.home = "/home/${user.name}";
+  tardis = mkSystem inputs.nixpkgs {
+    vars = rec {
+      machine = "tardis";
+      user.name = "steve";
+      user.home = "/home/${user.name}";
+    };
+    extraModules = [
+      inputs.self.nixosModules.hardware-framework-laptop-16-7040-amd
+    ];
   };
 
-  tv-box = mkSystem inputs.nixpkgs rec {
-    machine = "tv-box";
-    user.name = "steve";
-    user.home = "/home/${user.name}";
+  tv-box = mkSystem inputs.nixpkgs {
+    vars = rec {
+      machine = "tv-box";
+      user.name = "steve";
+      user.home = "/home/${user.name}";
+    };
+    extraModules = [
+      inputs.self.nixosModules.hardware-raspberry-pi-5
+    ];
   };
 }

@@ -1,23 +1,11 @@
 {
-  lib,
   pkgs,
-  config,
-  inputs,
   vars,
   overlays,
   ...
 }:
 
 {
-  imports = [
-    inputs.nixos-hardware.nixosModules.framework-16-7040-amd
-  ];
-
-  # Prevent screen artifacts. This negatively impacts battery life ...
-  # TODO: this might get fixed upstream at some point (nixos-hardware or kernel)
-  # see: https://github.com/NixOS/nixos-hardware/pull/1692
-  boot.kernelParams = lib.mkAfter [ "amdgpu.dcdebugmask=0x410" ];
-
   ########## My NixOS modules #####################################################################
 
   my = {
@@ -33,9 +21,6 @@
       ociContainersBackend = "docker";
     };
   };
-
-  hardware.flipperzero.enable = true;
-  services.hardware.openrgb.enable = true;
 
   ########## NixOS ################################################################################
 
@@ -55,26 +40,13 @@
   ########## boot #################################################################################
 
   boot = {
+    kernelPackages = pkgs.linuxPackages_7_3;
     binfmt.emulatedSystems = [
       # Enable binfmt emulation of aarch64-linux for generating an image for the Raspberry Pi.
       "aarch64-linux"
     ];
     initrd.luks.devices."luks-2634ae65-a0f5-4938-aabe-52d2fc9f40aa".device =
       "/dev/disk/by-uuid/2634ae65-a0f5-4938-aabe-52d2fc9f40aa"; # Swap
-    loader = {
-      grub = {
-        enable = true;
-        device = "nodev";
-        efiSupport = true;
-        configurationLimit = 30;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-    };
-    kernel.sysctl."vm.swappiness" = 10;
-    kernelPackages = pkgs.linuxPackages_7_3;
   };
 
   ########## networking ###########################################################################
@@ -98,6 +70,7 @@
   services = {
     flatpak.enable = true;
     fwupd.enable = true;
+    hardware.openrgb.enable = true;
     pcscd.enable = true; # for YubiKey
     ollama = {
       enable = true;
@@ -130,31 +103,13 @@
       xkb.layout = "de";
       videoDrivers = [ "amdgpu" ]; # is actually for X11 and Wayland
     };
-    acpid = {
-      enable = true;
-      lidEventCommands =
-        let
-          goodixVendor = "27c6"; # lsusb | grep Goodix
-        in
-        # disable the fingerprint sensor when the laptop lid is closed
-        # thanks to: https://github.com/NixOS/nixos-hardware/issues/1433
-        lib.mkIf config.services.fprintd.enable ''
-          grep -q closed /proc/acpi/button/lid/LID0/state
-          if [ $? = 0 ]; then
-            ${pkgs.fd}/bin/fd "-" /sys/bus/usb/devices --exec /bin/sh -c '${pkgs.gnugrep}/bin/grep -qs ${goodixVendor} {}/idVendor && ${pkgs.coreutils}/bin/echo 0 > {}/authorized'
-            systemctl restart fprintd.service
-          else
-            ${pkgs.fd}/bin/fd "-" /sys/bus/usb/devices --exec /bin/sh -c '${pkgs.gnugrep}/bin/grep -qs ${goodixVendor} {}/idVendor && ${pkgs.coreutils}/bin/echo 1 > {}/authorized'
-            systemctl restart fprintd.service
-          fi
-        '';
-    };
   };
 
   security.rtkit.enable = true; # used by PipeWire
 
   hardware = {
     bluetooth.enable = true;
+    flipperzero.enable = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -181,8 +136,6 @@
   };
 
   ########## users ################################################################################
-
-  home-manager.users."${vars.user.name}" = ./home;
 
   users.users = {
     "${vars.user.name}" = {

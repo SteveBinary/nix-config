@@ -23,32 +23,6 @@
     terminfo.enableGhostty = true;
   };
 
-  ########## boot ################################################################################
-
-  boot = {
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
-    };
-    consoleLogLevel = 2;
-    supportedFilesystems.zfs = lib.mkForce false;
-    kernel.sysctl."vm.swappiness" = 10;
-  };
-
-  ########## file systems #########################################################################
-
-  fileSystems = {
-    # this was not picked up by the hardware scan
-    "/" = {
-      device = "/dev/disk/by-label/NIXOS_SD";
-      fsType = "ext4";
-      options = [
-        # extend life of the SD card
-        "noatime"
-      ];
-    };
-  };
-
   ########## networking ###########################################################################
 
   networking = {
@@ -124,11 +98,4 @@
         };
       };
   };
-
-  ########## environment  #########################################################################
-
-  environment.systemPackages = with pkgs; [
-    libraspberrypi
-    raspberrypi-eeprom
-  ];
 }
