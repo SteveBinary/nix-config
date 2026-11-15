@@ -18,6 +18,7 @@ let
 in
 {
   benchmark-cpu = pkgs.callPackage ./benchmark/cpu.nix { };
-  discovery-sdcard-image = mkAarch64SdCardImageFromNixosConfiguration inputs.self.nixosConfigurations.discovery;
   x86-64-level = pkgs.callPackage ./x86-64-level { };
+  discovery-sdcard-image = mkAarch64SdCardImageFromNixosConfiguration inputs.self.nixosConfigurations.discovery;
+  tv-box-sdcard-image = mkAarch64SdCardImageFromNixosConfiguration inputs.self.nixosConfigurations.tv-box;
 }

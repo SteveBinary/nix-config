@@ -50,4 +50,10 @@ in
     user.name = "steve";
     user.home = "/home/${user.name}";
   };
+
+  tv-box = mkSystem inputs.nixpkgs rec {
+    machine = "tv-box";
+    user.name = "steve";
+    user.home = "/home/${user.name}";
+  };
 }

@@ -1,3 +1,6 @@
 {
-  imports = [ ./plasma ];
+  imports = [
+    ./plasma
+    ./plasma-bigscreen
+  ];
 }
