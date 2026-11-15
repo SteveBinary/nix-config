@@ -20,6 +20,7 @@
       enable = true;
       autoLoginUser = vars.user.name;
     };
+    localization.language = "de";
     nix = {
       enable = true;
       trusted-users = [ vars.user.name ];
@@ -82,13 +83,6 @@
   };
 
   security.rtkit.enable = true; # used by PipeWire
-
-  ########## localization #########################################################################
-
-  time.timeZone = "Europe/Berlin";
-  console.keyMap = "de";
-  i18n.defaultLocale = "de_DE.UTF-8";
-  services.xserver.xkb.layout = "de"; # KDE Plasma seems to adhere to this
 
   ########## users ################################################################################
 

@@ -16,13 +16,14 @@
 
   my = {
     common-utilities.enable = true;
-    virtualisation = {
-      enableDocker = true;
-      ociContainersBackend = "docker";
-    };
+    localization.language = "en_de";
     nix = {
       enable = true;
       trusted-users = [ vars.user.name ];
+    };
+    virtualisation = {
+      enableDocker = true;
+      ociContainersBackend = "docker";
     };
   };
 
@@ -100,11 +101,6 @@
     };
     rpcbind.enable = true; # needed for NFS
   };
-
-  ########## localization #########################################################################
-
-  time.timeZone = "Europe/Berlin";
-  console.keyMap = "de";
 
   ########## users ################################################################################
 

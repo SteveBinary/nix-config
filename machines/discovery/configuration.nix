@@ -16,6 +16,7 @@
 
   my = {
     common-utilities.enable = true;
+    localization.language = "en_de";
     nix = {
       enable = true;
       trusted-users = [ vars.user.name ];
@@ -68,11 +69,6 @@
       openFirewall = true;
     };
   };
-
-  ########## localization #########################################################################
-
-  time.timeZone = "Europe/Berlin";
-  console.keyMap = "de";
 
   ########## users ################################################################################
 

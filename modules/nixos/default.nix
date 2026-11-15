@@ -5,6 +5,7 @@
       ./common-utilities
       ./desktops
       ./gaming
+      ./localization
       ./nix
       ./programs
       ./terminfo
