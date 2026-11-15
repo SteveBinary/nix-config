@@ -31,6 +31,16 @@ let
             ];
           };
         }
+        {
+          nixpkgs = {
+            config.allowUnfree = true;
+            overlays = with inputs.self.overlays; [
+              pkgs-stable
+              my-lib
+              my-pkgs
+            ];
+          };
+        }
       ]
       ++ params.extraModules or [ ];
     };

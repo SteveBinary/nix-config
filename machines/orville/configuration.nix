@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   config,
   vars,
   ...
@@ -30,8 +29,6 @@
   ########## NixOS ################################################################################
 
   system.stateVersion = "25.11"; # Change with great care!
-
-  nixpkgs.config.allowUnfree = true;
 
   ########## Secrets ##############################################################################
 
@@ -82,18 +79,10 @@
     openssh = {
       enable = true;
       settings = {
-        PermitRootLogin = "prohibit-password";
+        Banner = pkgs.my.lib.sshBanner config.networking.hostName;
         PasswordAuthentication = false;
+        PermitRootLogin = "prohibit-password";
       };
-      banner = lib.concatLines [
-        # using https://manytools.org/hacker-tools/ascii-banner/ with font ANSI Shadow and horizontal/vertical spacing of Normal
-        " ██████╗ ██████╗ ██╗   ██╗██╗██╗     ██╗     ███████╗"
-        "██╔═══██╗██╔══██╗██║   ██║██║██║     ██║     ██╔════╝"
-        "██║   ██║██████╔╝██║   ██║██║██║     ██║     █████╗  "
-        "██║   ██║██╔══██╗╚██╗ ██╔╝██║██║     ██║     ██╔══╝  "
-        "╚██████╔╝██║  ██║ ╚████╔╝ ██║███████╗███████╗███████╗"
-        " ╚═════╝ ╚═╝  ╚═╝  ╚═══╝  ╚═╝╚══════╝╚══════╝╚══════╝"
-      ];
     };
     iperf3 = {
       enable = true;

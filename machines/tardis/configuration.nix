@@ -27,16 +27,10 @@
 
   system.stateVersion = "26.11"; # Change with great care!
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = with overlays; [
-      pkgs-stable
-      my-lib
-      my-pkgs
-      json2nix
-      rambo
-    ];
-  };
+  nixpkgs.overlays = with overlays; [
+    json2nix
+    rambo
+  ];
 
   ########## boot #################################################################################
 

@@ -1,6 +1,6 @@
 {
   pkgs,
-  lib,
+  config,
   vars,
   ...
 }:
@@ -9,8 +9,6 @@
   ########## NixOS ################################################################################
 
   system.stateVersion = "26.11"; # Change with great care!
-
-  nixpkgs.config.allowUnfree = true;
 
   ########## My NixOS modules #####################################################################
 
@@ -53,25 +51,11 @@
   services = {
     openssh = {
       enable = true;
-      settings =
-        let
-          banner = pkgs.writeText "ssh-banner.txt" (
-            lib.concatLines [
-              # using https://manytools.org/hacker-tools/ascii-banner/
-              # with font ANSI Shadow and horizontal/vertical spacing of Normal and the shodow manually removed
-              "████████ ██    ██       ██████   ██████  ██   ██"
-              "   ██    ██    ██       ██   ██ ██    ██  ██ ██ "
-              "   ██    ██    ██ █████ ██████  ██    ██   ███  "
-              "   ██     ██  ██        ██   ██ ██    ██  ██ ██ "
-              "   ██      ████         ██████   ██████  ██   ██"
-            ]
-          );
-        in
-        {
-          PermitRootLogin = "prohibit-password";
-          PasswordAuthentication = false;
-          Banner = "${banner}";
-        };
+      settings = {
+        Banner = pkgs.my.lib.sshBanner config.networking.hostName;
+        PasswordAuthentication = false;
+        PermitRootLogin = "prohibit-password";
+      };
     };
     flatpak.enable = true;
     pipewire = {
