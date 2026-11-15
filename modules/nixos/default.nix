@@ -3,8 +3,8 @@
     ./common-utilities
     ./desktops
     ./gaming
-    ./hardware
     ./nix
+    ./programs
     ./terminfo
     ./virtualisation
   ];
