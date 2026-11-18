@@ -18,7 +18,9 @@ let
 in
 {
   benchmark-cpu = pkgs.callPackage ./benchmark/cpu.nix { };
+  hetzner-cost-optimized-availability-watcher = pkgs.callPackage ./hetzner-watcher { };
   x86-64-level = pkgs.callPackage ./x86-64-level { };
+
   discovery-sdcard-image = mkAarch64SdCardImageFromNixosConfiguration inputs.self.nixosConfigurations.discovery;
   tv-box-sdcard-image = mkAarch64SdCardImageFromNixosConfiguration inputs.self.nixosConfigurations.tv-box;
 }
