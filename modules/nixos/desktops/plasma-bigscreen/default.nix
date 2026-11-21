@@ -5,6 +5,9 @@
   ...
 }:
 
+# Plasma Bigscreen is intended e.g. for a HTPC (Home Theater PC).
+# Here it is configured to reflect that intended use case.
+
 let
   cfg = config.my.desktop.plasma-bigscreen;
 in
@@ -17,6 +20,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    # faster boot into the latest generation if no keyboard interaction happens
+    boot.loader.timeout = 1;
+
     services = {
       desktopManager.plasma6.enable = true;
       displayManager = {
@@ -33,7 +39,7 @@ in
     # Plasma Bigscreen depends on KDE Connect
     programs.kdeconnect.enable = true;
 
-    # Disable the personal information management suite (KMail, Kontact, Merkuro)
+    # disable the personal information management suite (KMail, Kontact, Merkuro)
     programs.kde-pim.enable = false;
 
     environment.systemPackages = with pkgs; [

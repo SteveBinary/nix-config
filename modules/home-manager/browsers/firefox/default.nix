@@ -29,6 +29,14 @@ in
       ];
       default = "system";
     };
+    uiDensity = lib.mkOption {
+      type = lib.types.enum [
+        "standard"
+        "comapct"
+        "touch"
+      ];
+      default = "standard";
+    };
     extensions = lib.mkOption {
       default = { };
       type = lib.types.submodule {

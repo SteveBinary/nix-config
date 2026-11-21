@@ -30,7 +30,6 @@
 
   hardware = {
     bluetooth.enable = true;
-    graphics.enable = true;
   };
 
   ########## networking ###########################################################################
@@ -38,8 +37,6 @@
   networking = {
     hostName = vars.machine;
     firewall.enable = true;
-    defaultGateway = "192.168.178.1";
-    nameservers = [ "192.168.178.25" ]; # discovery
     networkmanager = {
       enable = true;
       wifi.powersave = false;

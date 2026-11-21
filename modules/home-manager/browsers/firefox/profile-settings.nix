@@ -13,8 +13,19 @@
   "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
   "browser.newtabpage.activity-stream.discoverystream.enabled" = false;
 
+  "browser.uidensity" =
+    {
+      standard = 0;
+      compact = 1;
+      touch = 2;
+    }
+    .${cfg.uiDensity};
+
   "browser.tabs.loadBookmarksInTabs" = true;
   "browser.tabs.closeWindowWithLastTab" = false;
+
+  # create "PWA"s
+  "browser.taskbarTabs.enabled" = true;
 
   "browser.translations.enable" = true;
   "browser.translations.panelShown" = true;
@@ -36,6 +47,9 @@
   "extensions.htmlaboutaddons.recommendations.enabled" = false;
 
   "intl.accept_languages" = "de,en";
+
+  # play DRM-protected content
+  "media.eme.enabled" = true;
 
   "middlemouse.paste" = false;
 

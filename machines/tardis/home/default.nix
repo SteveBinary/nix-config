@@ -121,8 +121,8 @@
         PasswordAuthentication = "no";
         PubkeyAuthentication = "yes";
       };
-      "tv-box 192.168.178.144" = {
-        Hostname = "192.168.178.144";
+      "tv-box 192.168.178.115" = {
+        Hostname = "192.168.178.115";
         Port = 22;
         User = "steve";
         IdentityFile = config.sops.secrets."ssh_keys/id_tv-box_ed25519".path;

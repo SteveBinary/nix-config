@@ -83,7 +83,7 @@ in
       user.home = "/home/${user.name}";
     };
     extraModules = [
-      inputs.self.nixosModules.hardware-raspberry-pi-5
+      inputs.self.nixosModules.hardware-csl-narrow-box-black-intel
     ];
   };
 }

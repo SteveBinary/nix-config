@@ -10,7 +10,7 @@
       zsh.enable = true;
     };
     tools = {
-      # atuin.enable = true;
+      atuin.enable = true;
       bat.enable = true;
       direnv.enable = true;
       fzf.enable = true;
@@ -25,10 +25,10 @@
   };
 
   my.browsers = {
-    chromium.enable = true;
     firefox = {
       enable = true;
       theme = "dark";
+      uiDensity = "touch";
       extensions = {
         bitwarden.enable = true;
         plasmaBrowserIntegration.enable = true;
