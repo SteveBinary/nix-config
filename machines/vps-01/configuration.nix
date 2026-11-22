@@ -50,21 +50,15 @@
 
   users = {
     mutableUsers = true; # we need to be able to change the password after initial user creation
-    users =
-      let
-        sshAuthorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfhNXGZVzHnCFtFZWgoi4fCtEJAD0glDTS2Z3wDs8eu vps-01"
-        ];
-      in
-      {
-        "${vars.user.name}" = {
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-          home = vars.user.home;
-          initialHashedPassword = "$y$j9T$rxOmprOnDESXzo7yMl.zZ/$gP/k6vFvRSOIkLynI6BcCaOMs3Xn4.CAL734g67TXmD";
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
+    users = {
+      ${vars.user.name} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        home = vars.user.home;
+        initialHashedPassword = "$y$j9T$rxOmprOnDESXzo7yMl.zZ/$gP/k6vFvRSOIkLynI6BcCaOMs3Xn4.CAL734g67TXmD";
+        openssh.authorizedKeys.keys = vars.user.authorizedKeys;
       };
+    };
   };
 
   ########## environment  #########################################################################

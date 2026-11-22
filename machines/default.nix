@@ -49,8 +49,13 @@ in
   discovery = mkSystem inputs.nixpkgs {
     vars = rec {
       machine = "discovery";
-      user.name = "steve";
-      user.home = "/home/${user.name}";
+      user = {
+        name = "steve";
+        home = "/home/${user.name}";
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFS9+5OcvdqwTxDbfw1K0ylYTlLxKZEXDL2mcZLSzLx9 discovery"
+        ];
+      };
     };
     extraModules = [
       inputs.self.nixosModules.hardware-raspberry-pi-4
@@ -60,16 +65,23 @@ in
   orville = mkSystem inputs.nixpkgs-stable {
     vars = rec {
       machine = "orville";
-      user.name = "steve";
-      user.home = "/home/${user.name}";
+      user = {
+        name = "steve";
+        home = "/home/${user.name}";
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhJ8AAl4pGSIH3m4+ok3cwKHJqvI6Chi4QJprSNvBw8 orville"
+        ];
+      };
     };
   };
 
   tardis = mkSystem inputs.nixpkgs {
     vars = rec {
       machine = "tardis";
-      user.name = "steve";
-      user.home = "/home/${user.name}";
+      user = {
+        name = "steve";
+        home = "/home/${user.name}";
+      };
     };
     extraModules = [
       inputs.self.nixosModules.hardware-framework-laptop-16-7040-amd
@@ -79,8 +91,13 @@ in
   tv-box = mkSystem inputs.nixpkgs {
     vars = rec {
       machine = "tv-box";
-      user.name = "steve";
-      user.home = "/home/${user.name}";
+      user = {
+        name = "steve";
+        home = "/home/${user.name}";
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHve+hC9S0UZx5c4uMDZElZgd1FWOLkvH6omc/2b9Hdf tv-box"
+        ];
+      };
     };
     extraModules = [
       inputs.self.nixosModules.hardware-csl-narrow-box-black-intel
@@ -90,8 +107,13 @@ in
   vps-01 = mkSystem inputs.nixpkgs {
     vars = rec {
       machine = "vps-01";
-      user.name = "steve";
-      user.home = "/home/${user.name}";
+      user = {
+        name = "steve";
+        home = "/home/${user.name}";
+        authorizedKeys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIfhNXGZVzHnCFtFZWgoi4fCtEJAD0glDTS2Z3wDs8eu vps-01"
+        ];
+      };
     };
   };
 }

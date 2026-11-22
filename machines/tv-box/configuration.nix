@@ -70,28 +70,19 @@
 
   users = {
     mutableUsers = false;
-    users =
-      let
-        sshAuthorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHve+hC9S0UZx5c4uMDZElZgd1FWOLkvH6omc/2b9Hdf tv-box"
+    users = {
+      ${vars.user.name} = {
+        uid = 1000;
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+          "networkmanager"
         ];
-      in
-      {
-        "${vars.user.name}" = {
-          uid = 1000;
-          isNormalUser = true;
-          extraGroups = [
-            "wheel"
-            "networkmanager"
-          ];
-          home = vars.user.home;
-          hashedPassword = "$y$j9T$id4BLhGoR56bGO.tcgmBB0$yjhsYQRVakyRHlARALr7FEwDf0Q.6Ib.iW3CtoXpA5D";
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
-        root = {
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
+        home = vars.user.home;
+        hashedPassword = "$y$j9T$id4BLhGoR56bGO.tcgmBB0$yjhsYQRVakyRHlARALr7FEwDf0Q.6Ib.iW3CtoXpA5D";
+        openssh.authorizedKeys.keys = vars.user.authorizedKeys;
       };
+    };
   };
 
   ########## fonts ################################################################################

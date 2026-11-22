@@ -59,24 +59,15 @@
 
   users = {
     mutableUsers = false;
-    users =
-      let
-        sshAuthorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFS9+5OcvdqwTxDbfw1K0ylYTlLxKZEXDL2mcZLSzLx9 discovery"
-        ];
-      in
-      {
-        "${vars.user.name}" = {
-          uid = 1000;
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-          home = vars.user.home;
-          hashedPassword = "$y$j9T$sIOE8k/IG3z2gd8GiUg8E0$vI9TA5TRKTj/RNHdg8K7HRSMriwKc6f68GPWD79YYl3";
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
-        root = {
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
+    users = {
+      ${vars.user.name} = {
+        uid = 1000;
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        home = vars.user.home;
+        hashedPassword = "$y$j9T$sIOE8k/IG3z2gd8GiUg8E0$vI9TA5TRKTj/RNHdg8K7HRSMriwKc6f68GPWD79YYl3";
+        openssh.authorizedKeys.keys = vars.user.authorizedKeys;
       };
+    };
   };
 }

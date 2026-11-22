@@ -96,24 +96,15 @@
 
   users = {
     mutableUsers = false;
-    users =
-      let
-        sshAuthorizedKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBhJ8AAl4pGSIH3m4+ok3cwKHJqvI6Chi4QJprSNvBw8 orville"
-        ];
-      in
-      {
-        "${vars.user.name}" = {
-          isNormalUser = true;
-          extraGroups = [ "wheel" ];
-          home = vars.user.home;
-          hashedPasswordFile = config.sops.secrets."user/hashed_password".path;
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
-        root = {
-          openssh.authorizedKeys.keys = sshAuthorizedKeys;
-        };
+    users = {
+      ${vars.user.name} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        home = vars.user.home;
+        hashedPasswordFile = config.sops.secrets."user/hashed_password".path;
+        openssh.authorizedKeys.keys = vars.user.authorizedKeys;
       };
+    };
   };
 
   ########## environment  #########################################################################
