@@ -1,4 +1,11 @@
 {
+  pkgs,
+  ...
+}:
+
+{
+  home.stateVersion = "26.11";
+
   my.development = {
     editors.helix.enable = true;
   };
@@ -37,5 +44,8 @@
     };
   };
 
-  home.stateVersion = "26.11";
+  home.packages = with pkgs; [
+    localsend
+    spotify
+  ];
 }
