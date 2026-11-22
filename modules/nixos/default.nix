@@ -8,6 +8,7 @@
       ./localization
       ./nix
       ./programs
+      ./services
       ./terminfo
       ./virtualisation
     ];

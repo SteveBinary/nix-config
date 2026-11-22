@@ -102,6 +102,10 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    includes = [
+      # For configs that should be encrypted, e.g. for hiding the public IP addres of a VPS.
+      "${config.home.homeDirectory}/.ssh/config.d/*"
+    ];
     settings = {
       "orville 192.168.100.50" = {
         HostName = "192.168.100.50";
@@ -113,7 +117,7 @@
         PubkeyAuthentication = "yes";
       };
       "discovery 192.168.178.25" = {
-        Hostname = "192.168.178.25";
+        HostName = "192.168.178.25";
         Port = 22;
         User = "steve";
         IdentityFile = config.sops.secrets."ssh_keys/id_discovery_ed25519".path;
@@ -122,7 +126,7 @@
         PubkeyAuthentication = "yes";
       };
       "tv-box 192.168.178.115" = {
-        Hostname = "192.168.178.115";
+        HostName = "192.168.178.115";
         Port = 22;
         User = "steve";
         IdentityFile = config.sops.secrets."ssh_keys/id_tv-box_ed25519".path;
@@ -137,24 +141,16 @@
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
     secrets = {
-      "ssh_keys/id_discovery_ed25519_pub" = {
-        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519.pub";
-      };
-      "ssh_keys/id_discovery_ed25519" = {
-        path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519";
-      };
-      "ssh_keys/id_orville_ed25519_pub" = {
-        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519.pub";
-      };
-      "ssh_keys/id_orville_ed25519" = {
-        path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519";
-      };
-      "ssh_keys/id_tv-box_ed25519_pub" = {
-        path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519.pub";
-      };
-      "ssh_keys/id_tv-box_ed25519" = {
-        path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519";
-      };
+      "ssh_configs/vps-01".path = "${config.home.homeDirectory}/.ssh/config.d/vps-01.conf";
+      "ssh_keys/id_discovery_ed25519_pub".path =
+        "${config.home.homeDirectory}/.ssh/id_discovery_ed25519.pub";
+      "ssh_keys/id_discovery_ed25519".path = "${config.home.homeDirectory}/.ssh/id_discovery_ed25519";
+      "ssh_keys/id_orville_ed25519_pub".path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519.pub";
+      "ssh_keys/id_orville_ed25519".path = "${config.home.homeDirectory}/.ssh/id_orville_ed25519";
+      "ssh_keys/id_tv-box_ed25519_pub".path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519.pub";
+      "ssh_keys/id_tv-box_ed25519".path = "${config.home.homeDirectory}/.ssh/id_tv-box_ed25519";
+      "ssh_keys/id_vps-01_ed25519_pub".path = "${config.home.homeDirectory}/.ssh/id_vps-01_ed25519.pub";
+      "ssh_keys/id_vps-01_ed25519".path = "${config.home.homeDirectory}/.ssh/id_vps-01_ed25519";
     };
   };
 

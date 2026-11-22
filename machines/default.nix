@@ -86,4 +86,12 @@ in
       inputs.self.nixosModules.hardware-csl-narrow-box-black-intel
     ];
   };
+
+  vps-01 = mkSystem inputs.nixpkgs {
+    vars = rec {
+      machine = "vps-01";
+      user.name = "steve";
+      user.home = "/home/${user.name}";
+    };
+  };
 }

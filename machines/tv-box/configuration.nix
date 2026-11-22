@@ -46,6 +46,7 @@
   ########## services #############################################################################
 
   services = {
+    # TODO: use my.services.openssh
     openssh = {
       enable = true;
       settings = {
