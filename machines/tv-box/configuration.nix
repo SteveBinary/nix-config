@@ -36,7 +36,15 @@
 
   networking = {
     hostName = vars.machine;
-    firewall.enable = true;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        53317 # LocalSend
+      ];
+      allowedUDPPorts = [
+        53317 # LocalSend
+      ];
+    };
     networkmanager = {
       enable = true;
       wifi.powersave = false;
