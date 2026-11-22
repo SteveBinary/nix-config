@@ -4,5 +4,6 @@
     ./configuration.nix
     ./container-services
     ./disk-config.nix
+    ./mounts.nix
   ];
 }
