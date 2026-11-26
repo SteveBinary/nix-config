@@ -49,6 +49,12 @@
     firewall.enable = true;
   };
 
+  ########## secrets ##############################################################################
+
+  # The key needs to be present on the target host!
+  # It was generated on the installed machine via: age-keygen -pq -o ~/.config/sops/age/keys.txt
+  sops.age.keyFile = "${vars.user.home}/.config/sops/age/keys.txt";
+
   ########## users ################################################################################
 
   users = {
