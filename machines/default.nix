@@ -104,7 +104,7 @@ in
     ];
   };
 
-  vps-01 = mkSystem inputs.nixpkgs {
+  vps-01 = mkSystem inputs.nixpkgs-stable {
     vars = rec {
       machine = "vps-01";
       user = {

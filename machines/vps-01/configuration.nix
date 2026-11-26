@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   vars,
   ...
 }:
@@ -34,8 +35,10 @@
 
   boot.loader.grub = {
     enable = true;
-    devices = [ "/dev/sda" ];
     configurationLimit = 10;
+    # force will make it work on install with nixos-anywhere + disko and later when installed,
+    # because disko also sets it to [ "/dev/sda" ], which would duplicate "/dev/sda"
+    devices = lib.mkForce [ "/dev/sda" ];
   };
 
   ########## networking ###########################################################################

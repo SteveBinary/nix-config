@@ -35,8 +35,14 @@ in
         containers.enable = true;
         docker = {
           enable = true;
-          autoPrune.enable = true;
-          storageDriver = "overlay2";
+          autoPrune = {
+            enable = true;
+            flags = [ "--all" ];
+          };
+          # Docker 29 uses the new overlayfs containerd snapshotter by default in new installs.
+          # This cannot be set by a NixOS option, yet. `docker info`:
+          # Storage Driver: overlayfs
+          #   driver-type: io.containerd.snapshotter.v1
         };
       };
 

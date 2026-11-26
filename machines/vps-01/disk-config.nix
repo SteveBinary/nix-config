@@ -20,7 +20,7 @@
               priority = 1;
             };
             ESP = {
-              size = "512M"; # TODO: re-setup with 1G
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";

@@ -8,6 +8,7 @@
 
 let
   cfg = config.my.nix;
+  isUnstable = lib.hasPrefix "pre" lib.trivial.versionSuffix;
 in
 {
   options.my.nix = {
@@ -21,10 +22,17 @@ in
   config = lib.mkIf cfg.enable {
     nix = {
       package = pkgs.nixVersions.latest;
-      registry = {
-        nixpkgs.flake = inputs.nixpkgs;
-        nixpkgs-stable.flake = inputs.nixpkgs-stable;
-      };
+      registry =
+        if isUnstable then
+          {
+            nixpkgs.flake = inputs.nixpkgs;
+            nixpkgs-stable.flake = inputs.nixpkgs-stable;
+          }
+        else
+          {
+            nixpkgs.flake = inputs.nixpkgs-stable;
+            nixpkgs-unstable.flake = inputs.nixpkgs;
+          };
       channel.enable = false; # remove nix-channel related tools & configs, as flakes are used for everything
       settings = {
         warn-dirty = false;
